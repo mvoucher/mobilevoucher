@@ -22,7 +22,7 @@ $home = '#'; ?>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>M-Voucher 3</title>
+	<title>M-Voucher</title>
 
 	<!-- Main Styles -->
 	{!! HTML::style('assets/styles/style.min.css') !!}	
