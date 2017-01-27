@@ -5,7 +5,7 @@
             
     {!! Form::open(['url' => 'auth/login', 'method' => 'post', 'class' => 'frm-single']) !!}
     <div class="inside">
-      <div class="title"><strong>M-Voucher</strong> III</div>
+      <div class="title"><strong>M-Voucher</strong></div>
       <!-- /.title -->
      {{--  <div class="frm-title">Login</div> --}}
 

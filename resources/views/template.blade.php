@@ -46,7 +46,7 @@ $home = '#'; ?>
 <body>
 <div class="main-menu">
 	<header class="header">
-		<a href="{{ $home }}" class="logo"><i class="mdi mdi-credit-card-multiple"></i> M-Voucher III</a>
+		<a href="{{ $home }}" class="logo"><i class="mdi mdi-credit-card-multiple"></i> M-Voucher</a>
 		<button type="button" class="button-close fa fa-times js__menu_close"></button>
 		<div class="user">
 			<a href="#" class="avatar"><img src="{{ asset('profile_photos/'.auth()->user()->photo) }}" alt=""><span class="status online"></span></a>
