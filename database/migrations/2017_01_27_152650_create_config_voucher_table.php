@@ -17,8 +17,9 @@ class CreateConfigVoucherTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('limit');
-            $table->integer('min');
-            $table->integer('max');
+            $table->string('min');
+            $table->string('max');
+            $table->integer('digits');
             $table->timestamps();           
         });
     }
