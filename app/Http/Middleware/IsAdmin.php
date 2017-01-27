@@ -5,16 +5,10 @@ use Illuminate\Http\RedirectResponse;
 
 class IsAdmin {
 
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @return mixed
-	 */
+	
 	public function handle($request, Closure $next)
 	{
-		if (session('statut') === 'admin')
+		if (session('theuser') === 'admin')
 		{
 			return $next($request);
 		}

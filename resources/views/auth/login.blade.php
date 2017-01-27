@@ -1,44 +1,80 @@
-@extends('front.template')
+@extends('auth.template')
 
 @section('main')
-	<div class="row">
-		<div class="box">
-			<div class="col-lg-12">
-				@if(session()->has('error'))
-					@include('partials/error', ['type' => 'danger', 'message' => session('error')])
-				@endif	
-				<hr>	
-				<h2 class="intro-text text-center">{{ trans('front/login.connection') }}</h2>
-				<hr>
-				<p>{{ trans('front/login.text') }}</p>				
-				
-				{!! Form::open(['url' => 'auth/login', 'method' => 'post', 'role' => 'form']) !!}	
-				
-				<div class="row">
 
-					{!! Form::control('text', 6, 'log', $errors, trans('front/login.log')) !!}
-					{!! Form::control('password', 6, 'password', $errors, trans('front/login.password')) !!}
-					{!! Form::submit(trans('front/form.send'), ['col-lg-12']) !!}
-					{!! Form::check('memory', trans('front/login.remind')) !!}
-					{!! Form::text('address', '', ['class' => 'hpet']) !!}		  
-					<div class="col-lg-12">					
-						{!! link_to('password/email', trans('front/login.forget')) !!}
-					</div>
+            
+    {!! Form::open(['url' => 'auth/login', 'method' => 'post', 'class' => 'frm-single']) !!}
+    <div class="inside">
+      <div class="title"><strong>M-Voucher</strong> III</div>
+      <!-- /.title -->
+     {{--  <div class="frm-title">Login</div> --}}
 
-				</div>
-				
-				{!! Form::close() !!}
+           @if(session()->has('error'))
+                    @include('partials/error', ['type' => 'danger', 'message' => session('error')])
+                @endif
 
-				<div class="text-center">
-					<hr>
-						<h2 class="intro-text text-center">{{ trans('front/login.register') }}</h2>
-					<hr>	
-					<p>{{ trans('front/login.register-info') }}</p>
-					{!! link_to('auth/register', trans('front/login.registering'), ['class' => 'btn btn-default']) !!}
-				</div>
+           @if(session()->has('ok'))
+    @include('partials/error', ['type' => 'success', 'message' => session('ok')])
+  @endif
 
-			</div>
-		</div>
-	</div>
+      <!-- /.frm-title -->
+        <span class="text-danger">{{ $errors->first('log', ':message') }}</span>
+      <div class="frm-input">
+        {{ Form::email('log', null, ['class' => 'frm-inp','placeholder'=>'Username']) }}
+        <i class="fa fa-user frm-ico"></i>
+        </div>
+      <!-- /.frm-input -->
+
+       <!-- /.frm-title -->
+        <span class="text-danger">{{ $errors->first('password', ':message') }}</span>
+      <div class="frm-input">
+        {{ Form::password('password', ['class' => 'frm-inp','placeholder'=>'Password']) }}
+        <i class="fa fa-lock frm-ico"></i>
+        </div>
+      <!-- /.frm-input -->
+
+      <div class="clearfix margin-bottom-20">
+        <div class="pull-left">
+
+       {{--    <div class="checkbox primary">    
+                    <input id="memory" name="memory" type="checkbox">
+                    {!! Form::label('memory', 'Remember me') !!}
+          </div> --}}
+          <!-- /.checkbox -->
+        </div>
+        <!-- /.pull-left -->
+        <div class="pull-right"><a href="{{ url('password/email') }}" class="a-link"><i class="fa fa-unlock-alt"></i>Forgot password?</a></div>
+        <!-- /.pull-right -->
+      </div>
+      <!-- /.clearfix -->
+
+         <div class="row small-spacing">
+        <!-- /.col-sm-12 -->
+        <div class="col-sm-12"><button type="submit" class="btn btn-sm btn-icon btn-icon-left btn-social-with-text btn-facebook text-white waves-effect waves-light"><i class="ico fa fa-arrow-circle-right"></i><span>Login me in</span></button></div>
+        <!-- /.col-sm-6 -->
+      </div>
+
+<div class="frm-sponsors">
+      <div class="row small-spacing">
+       <!-- /.col-sm-12 -->
+        <div class="col-sm-8"><img class="img-responsive" src="{{ asset('assets/images/sponsers.png') }}"></div>
+         <div class="col-sm-4"><img class="img-responsive" src="{{ asset('assets/images/innovatelogo.png') }}"></div>
+      </div></div>
+      <!-- /.row -->
+
+ @include('auth/partial/footer')
+
+  
+    </div>
+    <!-- .inside -->
+    {!! csrf_field() !!}
+  {!! Form::close() !!}               
+
+  <!-- /.frm-single -->
+
+@stop
+
+@section('scripts')
+
 @stop
 

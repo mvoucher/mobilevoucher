@@ -1,5 +1,7 @@
 <?php
 
 return [
-	'send' => 'Envoyer'
+	'send' => 'envoyer',
+	'continue' => 'continuer',
+	'update' => 'mettre à jour'
 ];

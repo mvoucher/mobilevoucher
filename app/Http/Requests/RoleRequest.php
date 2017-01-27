@@ -11,7 +11,6 @@ class RoleRequest extends Request {
 	{
 		return [
 			'admin' => 'required|alpha|max:50',
-			'redac' => 'required|alpha|max:50',
 			'user'  => 'required|alpha|max:50'
 		];
 	}

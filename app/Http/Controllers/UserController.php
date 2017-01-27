@@ -10,27 +10,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller {
 
-	/**
-	 * The UserRepository instance.
-	 *
-	 * @var App\Repositories\UserRepository
-	 */
 	protected $user_gestion;
 
-	/**
-	 * The RoleRepository instance.
-	 *
-	 * @var App\Repositories\RoleRepository
-	 */	
 	protected $role_gestion;
 
-	/**
-	 * Create a new UserController instance.
-	 *
-	 * @param  App\Repositories\UserRepository $user_gestion
-	 * @param  App\Repositories\RoleRepository $role_gestion
-	 * @return void
-	 */
 	public function __construct(
 		UserRepository $user_gestion,
 		RoleRepository $role_gestion)
@@ -42,49 +25,26 @@ class UserController extends Controller {
 		$this->middleware('ajax', ['only' => 'updateSeen']);
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		return $this->indexSort('total');
+		$users = $this->user_gestion->all();
+		return view('users.list', compact('users'));
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-     * @param  string  $role
-	 * @return Response
-	 */
-	public function indexSort($role)
+
+public function getTrail(){
+	return view('users.trail');
+	}
+
+	public function getProfile(){
+		return view('profile.my_profile');
+	}
+
+	/*public function create()
 	{
-		$counts = $this->user_gestion->counts();
-		$users = $this->user_gestion->index(4, $role); 
-		$links = $users->render();
-		$roles = $this->role_gestion->all();
-
-		return view('back.users.index', compact('users', 'links', 'counts', 'roles'));		
+		return view('users.create', $this->role_gestion->getAllSelect());
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('back.users.create', $this->role_gestion->getAllSelect());
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  App\requests\UserCreateRequest $request
-	 *
-	 * @return Response
-	 */
 	public function store(
 		UserCreateRequest $request)
 	{
@@ -93,35 +53,17 @@ class UserController extends Controller {
 		return redirect('user')->with('ok', trans('back/users.created'));
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  App\Models\User
-	 * @return Response
-	 */
 	public function show(User $user)
 	{
-		return view('back.users.show',  compact('user'));
+		return view('back.admin.users.show',  compact('user'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  App\Models\User
-	 * @return Response
-	 */
 	public function edit(User $user)
 	{
-		return view('back.users.edit', array_merge(compact('user'), $this->role_gestion->getAllSelect()));
+		return view('back.admin.users.edit', array_merge(compact('user'), $this->role_gestion->getAllSelect()));
 	}
+*/
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  App\requests\UserUpdateRequest $request
-	 * @param  App\Models\User
-	 * @return Response
-	 */
 	public function update(
 		UserUpdateRequest $request,
 		User $user)
@@ -131,58 +73,59 @@ class UserController extends Controller {
 		return redirect('user')->with('ok', trans('back/users.updated'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  Illuminate\Http\Request $request
-	 * @param  App\Models\User $user
-	 * @return Response
-	 */
 	public function updateSeen(
-		Request $request, 
+		Request $request,
 		User $user)
 	{
 		$this->user_gestion->update($request->all(), $user);
-
 		return response()->json();
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  App\Models\user $user
-	 * @return Response
-	 */
 	public function destroy(User $user)
 	{
 		$this->user_gestion->destroyUser($user);
-
 		return redirect('user')->with('ok', trans('back/users.destroyed'));
 	}
 
-	/**
-	 * Display the roles form
-	 *
-	 * @return Response
-	 */
 	public function getRoles()
 	{
 		$roles = $this->role_gestion->all();
-
-		return view('back.users.roles', compact('roles'));
+		return view('back.admin.users.roles', compact('roles'));
 	}
 
-	/**
-	 * Update roles
-	 *
-	 * @param  App\requests\RoleRequest $request
-	 * @return Response
-	 */
 	public function postRoles(RoleRequest $request)
 	{
 		$this->role_gestion->update($request->except('_token'));
-		
 		return redirect('user/roles')->with('ok', trans('back/roles.ok'));
 	}
+
+	public function changePassword(Request $request)
+    {   
+            $this->validate($request, [
+                    'password' => 'required|min:8|confirmed',
+            ]);
+            $credentials = $request->only(
+                   'password', 'password_confirmation'
+            );
+
+            $user = auth()->user();
+            $user->password = bcrypt($credentials['password']);
+            $user->save();
+            return redirect('my_profile')->with('ok','Password successfully changed');
+    }
+
+    public function myProfile(){
+    	$user = new User;
+    	$id = auth()->user()->id;
+		$profile = $user->where('id','=',$id)->first();
+
+		if(session('theuser')=='admin'){
+			return view('back.global.profile.admin_view',compact('profile'));	
+		}
+
+	
+    }
+
+
 
 }

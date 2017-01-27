@@ -14,6 +14,6 @@ class UserAccess extends ListenerBase
      */
     public function handle(UserAccessEvent $event)
     {
-        $this->statut->setStatut();
+        $this->theuser->setTheuser();
     }
 }

@@ -21,13 +21,6 @@ class LanguageTest extends TestCase {
 	 *
 	 * @return void
 	 */
-	public function testShouldReturnHomeWithPortugueseLanguage()
-	{	
-		$this->visit('/language/pt-BR')
-             ->see('Contato')
-             ->dontSee('Connexion')
-			 ->dontSee('Connection');
-	}
 	
 	/**
 	 * A basic functional test should return a home page with english language, because we are trying access an invalid language url

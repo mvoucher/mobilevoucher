@@ -63,4 +63,30 @@ class RoleRepository {
 		return compact('select');
 	}
 
+	public function getOtherRoles()
+	{
+		$roles = new Role;
+		$select = $roles->where('id','!=',1)->get()->pluck('title', 'id');
+
+		return compact('select');
+	}
+
+		public function getOrgRoles()
+	{
+		$roles = new Role;
+		$select_org = $roles->where('id','=',2)->get()->pluck('title', 'id');
+
+		return compact('select_org');
+	}
+
+		public function getProgRoles()
+	{
+		$roles = new Role;
+		$select_prog = $roles->where('id','=',3)->get()->pluck('title', 'id');
+
+		return compact('select_prog');
+	}
+
+	
+
 }

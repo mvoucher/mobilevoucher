@@ -42,8 +42,11 @@ class Kernel extends HttpKernel {
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
 		'admin' => \App\Http\Middleware\IsAdmin::class,
-		'redac' => \App\Http\Middleware\IsRedactor::class,
-		'ajax' => \App\Http\Middleware\IsAjax::class
+		'ajax' => \App\Http\Middleware\IsAjax::class,
+        'client' => \App\Http\Middleware\IsClient::class,
+        'program' => \App\Http\Middleware\IsProgram::class,
+        'overseer' => \App\Http\Middleware\IsOverseer::class,
+        'field' => \App\Http\Middleware\IsField::class
 	];
 
 }

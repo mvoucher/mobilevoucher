@@ -4,25 +4,25 @@ namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Services\Statut;
+use App\Services\Theuser;
 
 class ListenerBase
 {
     /**
-     * The Statut instance.
+     * The theuser instance.
      *
-     * @var App\Services\Statut
+     * @var App\Services\theuser
      */
-    protected $statut;
+    protected $theuser;
 
     /**
      * Create the event listener.
      *
-     * @param App\Services\Statut $statut  
+     * @param App\Services\Theuser $theuser  
      * @return void
      */
-    public function __construct(Statut $statut)
+    public function __construct(Theuser $theuser)
     {
-        $this->statut = $statut;
+        $this->theuser = $theuser;
     }
 }

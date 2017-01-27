@@ -2,19 +2,16 @@
 
 return [
 	'administration' => 'Administration',
-	'redaction' => 'Rédaction',
-	'home' => 'Retour sur le site',
-	'logout' => 'Déconnexion',
+	'home' => 'Retour sur site',
+	'logout' => 'Se déconnecter',
 	'dashboard' => 'Tableau de bord',
-	'users' => 'Utilisateurs',
-	'see-all' => 'Voir tous',
+	'users' => 'utilisateurs',
+	'see-all' => 'Voir tout',
 	'add' => 'Ajouter',
-	'messages' => 'Messages',
-	'comments' => 'Commentaires',
-	'medias' => 'Médias',
-	'posts' => 'Articles',
-	'new-messages' => 'Nouveaux messages !',
-	'new-registers' => 'Nouveaux inscrits !',
-	'new-posts' => 'Nouveaux articles !',
-	'new-comments' => 'Nouveaux commentaires !'
+	'new-registers' => 'New users !',
+	'packages' => 'Packages',
+	'subscriptions' => 'Abonnements',
+	'my-profile' => 'My Profile',
+	'customers' => 'Les clients',
+	'all-users' => 'All users'
 ];

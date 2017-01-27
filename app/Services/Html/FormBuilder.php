@@ -2,20 +2,23 @@
 
 class FormBuilder extends \Collective\Html\FormBuilder {
 
-	public function submit($value = null, $options = [])
+	public function submit($value = null, $options = [],$class=null)
 	{
+		if($class==null){
+$class = 'btn btn-default';
+		}
 		return sprintf('
 			<div class="form-group %s">
 				%s
 			</div>',
 			empty($options) ? '' : $options[0],
-			parent::submit($value, ['class' => 'btn btn-default'])
+			parent::submit($value, ['class' => $class])
 		);
 	}
 
 	public function destroy($text, $message, $class = null)
 	{
-		return parent::submit($text, ['class' => 'btn btn-danger btn-block ' . ($class? $class:''), 'onclick' => 'return confirm(\'' . $message . '\')']);
+		return parent::submit($text, ['class' => 'btn btn-danger btn-xs ' . ($class? $class:''), 'onclick' => 'return confirm(\'' . $message . '\')']);
 	}
 
 	public function control($type, $colonnes, $nom, $errors, $label = null, $valeur = null, $pop = null, $placeholder = '')
@@ -68,7 +71,7 @@ class FormBuilder extends \Collective\Html\FormBuilder {
 	public function selection($nom, $list = [], $selected = null, $label = null)
 	{
 		return sprintf('
-			<div class="form-group" style="width:200px;">
+			<div class="form-group" style="">
 				%s
 				%s
 			</div>',
