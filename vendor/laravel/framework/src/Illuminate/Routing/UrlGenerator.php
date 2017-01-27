@@ -207,12 +207,24 @@ class UrlGenerator implements UrlGeneratorContract
      * @param  bool|null  $secure
      * @return string
      */
- public function asset($path, $secure = null)
+/* public function asset($path, $secure = null)
 {
     if ($this->isValidUrl($path)) return $path;
     $root = $this->getRootUrl($this->getScheme($secure));
     return $this->removeIndex($root).'/public/'.trim($path, '/');
-}
+}*/
+
+    public function asset($path, $secure = null)
+    {
+        if ($this->isValidUrl($path)) return $path;
+
+        // Once we get the root URL, we will check to see if it contains an index.php
+        // file in the paths. If it does, we will remove it since it is not needed
+        // for asset paths, but only for routes to endpoints in the application.
+        $root = $this->getRootUrl($this->getScheme($secure));
+
+        return $this->removeIndex($root).'/'.trim($path, '/');
+    }
 
     /**
      * Generate a URL to an asset from a custom root domain such as CDN, etc.
