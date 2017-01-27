@@ -5340,3 +5340,7 @@ ul#lang .active {
     }
 
     .hpet{ display: none; }
+
+    table tbody tr td .limit_fields{
+        width: 100px;
+    }

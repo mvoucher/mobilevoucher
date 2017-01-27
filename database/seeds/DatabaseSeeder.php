@@ -4,7 +4,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Role, 
-	App\Models\User;
+	App\Models\User,
+	App\Models\VoucherLimits;
 
 class DatabaseSeeder extends Seeder {
 
@@ -17,30 +18,15 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		Role::create([
-			'title' => 'Administrator',
-			'slug' => 'admin'
-		]);
+//defaults
+		Role::create(['title' => 'Administrator','slug' => 'admin']);
+		Role::create(['title' => 'Organisation','slug' => 'client']);
+		Role::create(['title' => 'Programme','slug' => 'program']);
+		Role::create(['title' => 'Field Officer','slug' => 'field']);
+		Role::create(['title' => 'Overseer','slug' => 'overseer']);
 
-		Role::create([
-			'title' => 'Organisation',
-			'slug' => 'client'
-		]);
-
-		Role::create([
-			'title' => 'Programme',
-			'slug' => 'program'
-		]);
-
-		Role::create([
-			'title' => 'Field Officer',
-			'slug' => 'field'
-		]);
-
-		Role::create([
-			'title' => 'Overseer',
-			'slug' => 'overseer'
-		]);
+		VoucherLimits::create(['limit' => 'voucherno','min' => 99, 'max' => 999]);
+		VoucherLimits::create(['limit' => 'serialno','min' => 99, 'max' => 999]);
 
 		User::create([
 			'name'=>'Najja Najibula',

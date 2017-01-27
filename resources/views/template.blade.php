@@ -57,7 +57,6 @@ $home = '#'; ?>
 				<i class="fa fa-caret-down js__drop_down_button"></i>
 				<div class="control-list">
 					<div class="control-item"><a href="{{ url('my_profile') }}"><i class="fa fa-user"></i> Profile</a></div>
-					<div class="control-item"><a href="#"><i class="fa fa-gear"></i> Settings</a></div>
 					<div class="control-item"><a href="{{ url('auth/logout') }}"><i class="fa fa-sign-out"></i> Log out</a></div>
 				</div>
 				<!-- /.control-list -->
@@ -223,11 +222,11 @@ $home = '#'; ?>
 				</li>
 
 				@if (session('theuser')=='admin')
-				<li>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-cog"></i><span>Configuration</span><span class="menu-arrow fa fa-angle-down"></span></a>
+				<li {!! classActiveSegment(1, 'configuration') !!}>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-gear"></i><span>Configuration</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="{{ url('configure_vouchers') }}">Vouchers</a></li>
-						<li><a href="#">Sub menu 2</a></li>
+						<li><a href="{{ url('configuration_vlimits') }}">Voucher Numbers</a></li>
+						<li><a href="{{ url('configuration_slimits') }}">Serial Numbers</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>

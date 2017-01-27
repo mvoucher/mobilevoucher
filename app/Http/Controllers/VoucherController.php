@@ -20,6 +20,7 @@ use App\Http\Requests\VoucherNoRequest;
 use App\Models\Voucherno;
 
 use App\Models\Batch;
+use App\Models\VoucherLimits;
 
 use Carbon\Carbon;
 
@@ -226,27 +227,35 @@ public function postVouchersNos(VoucherNoRequest $request)
     public function genSerialNo($batchno){      
          $exserialnos = new Voucherno;
 
+         //fetch set seral limits
+         $set_serial = new VoucherLimits;
+         $set_serials = $set_serial->where('limit','=','serialno')->first();
+
            do{
-               $third = $this->generateRandom(0,999999);
-              // $fourth = $this->generateRandom(0,99);
-               $serialnos = $third;
+               $serialnos = $this->generateRandom($set_serials->min,$set_serials->max);
           }
           while(!empty($exserialnos->where('serialno','=',$serialnos)->first()));
-         return $serialnos;      
+          $serial_dig = 6;
+          $num_dig = '%0'.$serial_dig.'d';
+         return sprintf($num_dig,$serialnos);      
     }
 
       //generate a voucher number combination
     public function genVoucherNo(){      
          $exvouchers = new Voucherno;
+         
+         //fetch set voucherno limits
+         $set_vlimit = new VoucherLimits;
+         $set_vlimits = $set_vlimit->where('limit','=','voucherno')->first();
 
        do{
-           $first = $this->generateRandom(9,99);
-           $second = $this->generateRandom(99,999);
-          $fifth = $this->generateRandom(0,9);
-           $vouchernos = $first.$fifth.$second;
+          $second = $this->generateRandom(0,9);
+           $vouchernos = $this->generateRandom($set_vlimits->min,$set_vlimits->max).$second;
          }
          while(!empty($exvouchers->where('voucherno','=',$vouchernos)->first()));
-         return $vouchernos;  
+          $voucher_dig = 7;
+          $num_digv = '%0'.$voucher_dig.'d';
+         return sprintf($num_digv,$vouchernos);  
     }
 
     //generated voucher numbers duplicates

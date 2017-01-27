@@ -100,7 +100,10 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('new_password', 'UserController@changePassword');
 
 	//configurtions
-	Route::get('configure_vouchers', 'ConfigurationController@getVoucherSettings');
+	Route::get('configuration_vlimits', 'ConfigurationController@getVoucherSettings');
+	Route::get('configuration_slimits', 'ConfigurationController@getSerialSettings');
+	Route::resource('configure_num', 'ConfigurationController@setNewLimit');
+
 
 
 

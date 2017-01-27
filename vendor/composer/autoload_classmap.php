@@ -22,6 +22,7 @@ return array(
     'Cellmap' => $vendorDir . '/dompdf/dompdf/include/cellmap.cls.php',
     'CreateBatchesTable' => $baseDir . '/database/migrations/2017_01_25_164711_create_batches_table.php',
     'CreateBeneficiarysTable' => $baseDir . '/database/migrations/2017_01_24_141629_create_beneficiarys_table.php',
+    'CreateConfigVoucherTable' => $baseDir . '/database/migrations/2017_01_27_152650_create_config_voucher_table.php',
     'CreateForeignKeys' => $baseDir . '/database/migrations/2016_11_28_180927_create_foreign_keys.php',
     'CreateInvitesTable' => $baseDir . '/database/migrations/2017_01_19_120826_create_invites_table.php',
     'CreateLoggedinTable' => $baseDir . '/database/migrations/2017_01_17_033202_create_loggedin_table.php',
