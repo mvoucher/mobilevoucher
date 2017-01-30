@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'nsnajibullah@gmail.com', 'name' => 'Mobile Voucher'],
+	'from' => ['address' => 'mobilevoucher@uginnovate.com', 'name' => 'Mobile Voucher'],
 
 	/*
 	|--------------------------------------------------------------------------
