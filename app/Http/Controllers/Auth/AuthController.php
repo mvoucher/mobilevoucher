@@ -167,7 +167,7 @@ class AuthController extends Controller
 		return redirect('/');        
 	}
 
-public function getRegister($id,$registration_code)
+public function getRegister($registration_code)
     {
 
     	$invites = new Invite;

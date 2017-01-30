@@ -230,16 +230,7 @@ public function postVouchersNos(VoucherNoRequest $request)
          $set_vlimit = new VoucherLimits;
          $set_vlimits = $set_vlimit->where('limit','=','voucherno')->first();
 
-      $num1 = mt_rand(1,2147483647);
-      $num_12 = mt_rand(999999,2147483647);
-      $num2 = mt_rand(1,$num_12);
-      $num = $num1.$num2;
-      $x = (int)substr($num, 0, 6);
-      $y = (int)substr($num, -2); 
-       $ran_div1 = mt_rand(1,999);
-      $ran_div = mt_rand(1,$ran_div1);
-      $z = ($y.$x)/$ran_div;
-      $vouchernos = $z + mt_rand(1,999);
+      $vouchernos = mt_rand(9999,9999999);
 
           if(is_null($exserialnos->where('voucherno','=',$vouchernos)->first())) {
           return $vouchernos;
