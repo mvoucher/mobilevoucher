@@ -205,7 +205,7 @@ public function postVouchersNos(VoucherNoRequest $request)
          {
             $insert[]= [
               'batch_id' => $batchno,
-              'voucherno' => $this->genVoucherNo(),
+              'voucherno' => sprintf('%07d',$this->genVoucherNo()),
                'created_at' => Carbon::now(),
                'updated_at' => Carbon::now()
             ];
@@ -230,19 +230,22 @@ public function postVouchersNos(VoucherNoRequest $request)
          $set_vlimit = new VoucherLimits;
          $set_vlimits = $set_vlimit->where('limit','=','voucherno')->first();
 
-          do{
       $num1 = mt_rand(1,2147483647);
       $num_12 = mt_rand(999999,2147483647);
       $num2 = mt_rand(1,$num_12);
       $num = $num1.$num2;
       $x = (int)substr($num, 0, 6);
       $y = (int)substr($num, -2); 
-      $ran_div = mt_rand(1,99);
+       $ran_div1 = mt_rand(1,999);
+      $ran_div = mt_rand(1,$ran_div1);
       $z = ($y.$x)/$ran_div;
-     $vouchernos = sprintf('%07d',$z);
-          }
-          while(!empty($exserialnos->where('voucherno','=',$vouchernos)->first()));
+      $vouchernos = $z + mt_rand(1,999);
+
+          if(is_null($exserialnos->where('voucherno','=',$vouchernos)->first())) {
           return $vouchernos;
+          }else{
+ return $vouchernos+1;
+          }
 
       
     }
@@ -251,11 +254,16 @@ public function postVouchersNos(VoucherNoRequest $request)
     public function getOverallGeneratedDups(){
       $vouchers = new Voucherno;
 
-      $duplicates = $vouchers
-    ->select('voucherno')
-    ->groupBy('voucherno')
-    ->havingRaw('COUNT(*) > 1')
+$duplicates = $vouchers->whereIn('voucherno', function($query)
+    {
+        $query->select('voucherno')
+              ->from('vouchernos')
+              ->groupBy('voucherno')
+              ->havingRaw('COUNT(voucherno) > 1');
+    })
     ->get();
+
+   
 
         return view('vouchers.overall_duplicates',compact('duplicates'));
     }

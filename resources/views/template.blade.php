@@ -150,13 +150,13 @@ $home = '#'; ?>
 					@if (session('theuser')=='admin')
 						<li><a href="{{ url('voucher_types') }}">List types</a></li>
 						<li><a href="{{ url('voucher_batches') }}">List generated</a></li>
-						<li><a href="{{ url('voucher_all_dups') }}">Voucher Replacement</a></li>
 					@elseif (session('theuser')=='client')
 						<li><a href="{{ url('voucher_types_of_org') }}">List types</a></li>						
 						<li><a href="{{ url('voucher_org_batches') }}">List generated</a></li>
 					@elseif(session('theuser')=='program')
 						<li><a href="{{ url('voucher_types_of_prog') }}">List implemented</a></li>
 						<li><a href="{{ url('voucher_prog_batches') }}">List generated</a></li>
+						<li><a href="{{ url('voucher_all_dups') }}">Voucher Replacement</a></li>
 					@endif
 
 

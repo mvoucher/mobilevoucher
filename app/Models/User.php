@@ -26,6 +26,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Models\Vouchertype');
 	}
 
+			public function vouchernos() 
+	{
+		return $this->hasMany('App\Models\Voucherno');
+	}
+
 
 
 }

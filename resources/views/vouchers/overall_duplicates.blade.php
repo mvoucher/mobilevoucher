@@ -29,11 +29,11 @@
 						<tbody>
 							@foreach ($duplicates as $vnos)
 							<tr>
+								<td>{{ $vnos->batch->vouchertype->name }}</td>
+								<td>#{{ $vnos->batch_id }}</td>
 								<td>...</td>
-								<td>....</td>
-								<td>....</td>
-								<td>.....</td>
-								<td>.....</td>
+								<td>{{ $vnos->voucherno }}</td>
+								<td>{{ sprintf('%06d',$vnos->id) }}</td>
 								<td>......</td>
 							</tr>
 

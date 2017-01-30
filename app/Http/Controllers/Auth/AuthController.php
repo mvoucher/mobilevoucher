@@ -171,9 +171,7 @@ public function getRegister($id,$registration_code)
     {
 
     	$invites = new Invite;
-    	$invite = $invites->where('user_id', '=', $id)
-            ->where('registration_code', '=', $registration_code)
-            ->first();
+    	$invite = $invites->where('registration_code', '=', $registration_code)->first();
 
         if (!$invite) {
     		return redirect('/');

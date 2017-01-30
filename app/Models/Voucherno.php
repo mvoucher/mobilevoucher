@@ -12,5 +12,11 @@ class Voucherno extends Model  {
 		return $this->belongsTo('App\Models\Batch');
 	}
 
+		public function user() 
+	{
+		return $this->belongsTo('App\Models\User');
+	}
+
+
 
 }
