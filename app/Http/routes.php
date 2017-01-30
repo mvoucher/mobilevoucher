@@ -18,7 +18,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('auth/resend', 'Auth\AuthController@getResend');
 
 	// Registration routes...
-	Route::get('auth/register/{id}/{registration_code}', 'Auth\AuthController@getRegister');
+	Route::get('auth/register/{registration_code}', 'Auth\AuthController@getRegister');
 	Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 	// Password reset link request routes...
