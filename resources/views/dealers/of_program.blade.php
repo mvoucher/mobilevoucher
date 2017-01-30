@@ -30,20 +30,19 @@
 								<th>Bate of Birth</th>
 								<th>Location</th>
 								<th>MM Phonenumber</th>
-								<th>View : Edit</th>
+								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>....name</td>
-								<td>....sex</td>
-								<td>....dob</td>
-								<td>....add</td>
-								<td>....mm no</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 								<td>   
 								<div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
 						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
 								<td>

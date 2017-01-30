@@ -6,7 +6,7 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Register Agro Dealer' ?>
+<?php $page_name = 'Register Agent' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">

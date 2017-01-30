@@ -30,7 +30,6 @@
 								<th>Country</th>
 								<th>Telephone</th>
 								<th>Email</th>
-								<th>View : Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -41,14 +40,10 @@
 								<td>{{ $prog->country }}</td>
 								<td>{{ $prog->telephone }}</td>
 								<td>{{ $prog->email }}</td>
-								<td>   
-								<div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
-								</div></td>
+								
 								<td>
 		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
-        {!! Form::destroy('Delete', 'Are you sure you want to delete this client') !!}
+        {!! Form::destroy('Remove', 'Are you sure you want to delete this program') !!}
         {!! Form::close() !!}
 								</td>
 							</tr>

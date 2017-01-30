@@ -23,7 +23,6 @@
 								<th>Location</th>
 								<th>MM Phone no.</th>
 								<th>Programme</th>
-								<th>View</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,10 +33,6 @@
 								<td>....add</td>
 								<td>....mm no</td>
 								<td>....</td>
-								<td><div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-								</div>
-								</td>
 							</tr>
 							
 						</tbody>

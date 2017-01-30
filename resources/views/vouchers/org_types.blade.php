@@ -33,7 +33,7 @@
 								<th>Name</th>
 								<th>Color</th>
 								<th>Value</th>
-								<th>View : Edit</th>
+								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -45,7 +45,6 @@
 								<td>{{ number_format($voucher_type->value) }}</td>
 								<td>   
 								<div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
 						<a class="btn btn-warning btn-xs" href="{{ route('voucher.edit',$voucher_type->id) }}"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
 								<td>

@@ -7,7 +7,7 @@
 @stop
 
 @section('main')
-<?php $page_name = 'List of Agro Dealers' ?>
+<?php $page_name = 'List of Agents' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">

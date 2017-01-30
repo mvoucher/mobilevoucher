@@ -150,13 +150,13 @@ $home = '#'; ?>
 					@if (session('theuser')=='admin')
 						<li><a href="{{ url('voucher_types') }}">List types</a></li>
 						<li><a href="{{ url('voucher_batches') }}">List generated</a></li>
+						<li><a href="{{ url('voucher_all_dups') }}">Voucher Replacement</a></li>
 					@elseif (session('theuser')=='client')
 						<li><a href="{{ url('voucher_types_of_org') }}">List types</a></li>						
 						<li><a href="{{ url('voucher_org_batches') }}">List generated</a></li>
 					@elseif(session('theuser')=='program')
 						<li><a href="{{ url('voucher_types_of_prog') }}">List implemented</a></li>
 						<li><a href="{{ url('voucher_prog_batches') }}">List generated</a></li>
-						<li><a href="{{ url('voucher_all_dups') }}">Voucher Replacement</a></li>
 					@endif
 
 
@@ -164,7 +164,7 @@ $home = '#'; ?>
 					<!-- /.sub-menu js__content -->
 				</li>
 
-				@if (session('theuser')=='admin' || session('theuser')=='client')
+				@if (session('theuser')=='admin')
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-envira"></i><span>Products</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
@@ -177,19 +177,24 @@ $home = '#'; ?>
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-cash-multiple"></i><span>Payments</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="#">Float accounts</a></li>
+					@if(session('theuser')=='client')
 						<li><a href="#">Payment Logs</a></li>
+					@elseif(session('theuser')=='program')
+						<li><a href="#">Payment Logs</a></li>
+					@endif
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-convert"></i><span>Redemptions</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="#">Organisation</a></li>
-						<li><a href="#">Programme</a></li>
-						<li><a href="#">Dealer</a></li>
-						<li><a href="#">Voucher</a></li>
-						<li><a href="#">Product</a></li>
+					@if(session('theuser')=='client')
+						<li><a href="#">By Programme</a></li>
+						<li><a href="#">By Dealer/Agent</a></li>
+					@elseif(session('theuser')=='program')
+						<li><a href="#">By Dealer/Agent</a></li>
+					@endif
+						
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
@@ -199,7 +204,6 @@ $home = '#'; ?>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-headset"></i><span>Call Center</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 						<li><a href="#">View Logs</a></li>
-						<li><a href="#">Sub menu 2</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
