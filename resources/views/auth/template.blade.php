@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>M-Voucher 3</title>
+	<title>M-Voucher</title>
 	  {!! HTML::style('assets/styles/style.min.css') !!}
 	<link rel="stylesheet" href="">
 

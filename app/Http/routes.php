@@ -91,6 +91,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('voucher_batch_detail/{id}', 'VoucherController@getBatchDetails'); //by program
 	Route::resource('voucher_prog_destroy', 'VoucherController@postDeleteProgVoucher'); //by program
 	Route::get('voucher_overall_batch_detail/{id}', 'VoucherController@getOverallBatchDetails'); //by admin
+	Route::get('voucher_all_dups', 'VoucherController@getOverallGeneratedDups'); //by admin
 
 
 
@@ -100,9 +101,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('new_password', 'UserController@changePassword');
 
 	//configurtions
-	Route::get('configuration_vlimits', 'ConfigurationController@getVoucherSettings');
-	Route::get('configuration_slimits', 'ConfigurationController@getSerialSettings');
-	Route::resource('configure_num', 'ConfigurationController@setNewLimit');
+
 
 
 

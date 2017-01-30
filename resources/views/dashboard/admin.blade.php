@@ -58,6 +58,54 @@
     </div>
     <!-- .row -->
 
+      <div class="row small-spacing">
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content">
+          <div class="statistics-box with-icon">
+            <i class="ico fa fa-users text-inverse"></i>
+            <h2 class="counter text-inverse">0</h2>
+            <p class="text">Programme Overseer</p>
+          </div>
+        </div>
+        <!-- /.box-content -->
+      </div>
+      <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content">
+          <div class="statistics-box with-icon">
+            <i class="ico fa fa-user-secret text-success"></i>
+            <h2 class="counter text-success">0</h2>
+            <p class="text">Field</p>
+          </div>
+        </div>
+        <!-- /.box-content -->
+      </div>
+      <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+      <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content">
+          <div class="statistics-box with-icon">
+            <i class="ico fa fa-briefcase text-primary"></i>
+            <h2 class="counter text-primary">0</h2>
+            <p class="text">Team</p>
+          </div>
+        </div>
+        <!-- /.box-content -->
+      </div>
+      <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+      {{-- <div class="col-lg-3 col-md-6 col-xs-12">
+        <div class="box-content">
+          <div class="statistics-box with-icon">
+            <i class="ico fa fa-sitemap text-info"></i>
+            <h2 class="counter text-info">0</h2>
+            <p class="text">Programmes</p>
+          </div>
+        </div>
+      </div> --}}
+        <!-- /.box-content -->
+      <!-- /.col-lg-3 col-md-6 col-xs-12 -->
+    </div>
+    <!-- .row -->
+
     <div class="row small-spacing">
       <div class="col-lg-3 col-md-6 col-xs-12">
         <div class="box-content bg-primary text-white">

@@ -14,7 +14,7 @@
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
+						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
 							<li><a href="{{ url('voucher_prog_batches') }}">List generated vouchers</a></li>
 						</ul>
@@ -60,6 +60,18 @@
 				<!-- /.box-content -->
 			</div>
 			<!-- /.col-xs-12 -->
+
+			<?php 
+/*	$num1 = mt_rand(1,2147483647);
+      $num_12 = mt_rand(999999,2147483647);
+      $num2 = mt_rand(1,$num_12);
+      $num = $num1.$num2;
+			$x = (int)substr($num, 0, 6);
+			$y = (int)substr($num, -2); 
+			$ran_div = mt_rand(1,99);
+			$z = ($y.$x)/$ran_div;
+			sprintf('%07d',$z);*/
+			?>
 </div>
 
 

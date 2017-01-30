@@ -91,7 +91,17 @@ class AuthController extends Controller
 			}			
 			elseif(session('theuser') == 'program'){
 				return redirect('program');	
-			}else{
+			}
+			elseif(session('theuser') == 'overseer'){
+				return redirect('overseer');	
+			}
+			elseif(session('theuser') == 'field'){
+				return redirect('field');	
+			}
+			elseif(session('theuser') == 'team'){
+				return redirect('team');	
+			}
+			else{
 				return redirect('/');
 			}
 

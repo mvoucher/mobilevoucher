@@ -13,7 +13,7 @@
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
+						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
 							<li><a href="{{ url('organisationlist') }}">List Organisations</a></li>
 							<li><a href="{{ url('organisation_invites') }}">List Invites</a></li>

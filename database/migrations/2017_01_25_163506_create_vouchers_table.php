@@ -17,8 +17,8 @@ class CreateVouchersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('batch_id');
-            $table->integer('voucherno');
-            $table->integer('serialno');
+            $table->string('voucherno');
+            $table->string('replacement')->nullable();
             $table->timestamps();           
         });
     }

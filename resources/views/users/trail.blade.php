@@ -11,11 +11,11 @@
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
-				<div class="box-content">
+				<div class="box-content table-responsive">
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
+						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
 							<li><a href="#">Archive</a></li>
 						</ul>
@@ -25,28 +25,27 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
+							<th>#</th>
 								<th>User</th>
 								<th>IP Address</th>
 								<th>Login Time</th>
 								<th>View</th>
-								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
+						@foreach ($log_trails as $logs)
 							<tr>
-								<td>....</td>
-								<td>....</td>
-								<td>....</td>
+							<td>{{ $logs->id}}</td>
+								<td>{{ $logs->user->username}}</td>
+								<td>{{ $logs->last_login_at }}</td>
+								<td>{{ $logs->last_login_ip }}</td>
 								<td>   
 								<div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
 								</div></td>
-								<td>
-		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
-        {!! Form::destroy('Delete', 'Are you sure you want to delete this user') !!}
-        {!! Form::close() !!}
-								</td>
 							</tr>
+							{{-- expr --}}
+						@endforeach
 							
 						</tbody>
 					</table>

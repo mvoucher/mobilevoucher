@@ -11,11 +11,11 @@
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
-				<div class="box-content">
+				<div class="box-content table-responsive">
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
+						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
 							<li><a href="{{ route('beneficiary.create') }}">Register Beneficiary</a></li>
 							<li><a href="{{ url('beneficiary_import') }}">Import Beneficiaries</a></li>
@@ -35,11 +35,16 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>Full Name</th>
+								<th>First Name</th>
+								<th>Last Name</th>
 								<th>Gender</th>
 								<th>Age</th>
-								<th>Location</th>
-								<th>View : Edit</th>
+								<th>District</th>
+								<th>Sub County</th>
+								<th>Village</th>
+								<th>No.in H'sehold</th>
+								<th>Vou. Serial No</th>
+								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -49,6 +54,11 @@
 								<td>....sex</td>
 								<td>....dob</td>
 								<td>....add</td>
+								<td>....name</td>
+								<td>....sex</td>
+								<td>....dob</td>
+								<td>....add</td>
+								<td>.....</td>
 								<td>   
 								<div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>

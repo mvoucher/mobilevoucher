@@ -150,6 +150,7 @@ $home = '#'; ?>
 					@if (session('theuser')=='admin')
 						<li><a href="{{ url('voucher_types') }}">List types</a></li>
 						<li><a href="{{ url('voucher_batches') }}">List generated</a></li>
+						<li><a href="{{ url('voucher_all_dups') }}">Voucher Replacement</a></li>
 					@elseif (session('theuser')=='client')
 						<li><a href="{{ url('voucher_types_of_org') }}">List types</a></li>						
 						<li><a href="{{ url('voucher_org_batches') }}">List generated</a></li>
@@ -225,8 +226,7 @@ $home = '#'; ?>
 				<li {!! classActiveSegment(1, 'configuration') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-gear"></i><span>Configuration</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="{{ url('configuration_vlimits') }}">Voucher Numbers</a></li>
-						<li><a href="{{ url('configuration_slimits') }}">Serial Numbers</a></li>
+						<li><a href="#">Serial Numbers</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>

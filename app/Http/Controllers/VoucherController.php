@@ -206,7 +206,6 @@ public function postVouchersNos(VoucherNoRequest $request)
             $insert[]= [
               'batch_id' => $batchno,
               'voucherno' => $this->genVoucherNo(),
-              'serialno' => $this->genSerialNo($batchno),
                'created_at' => Carbon::now(),
                'updated_at' => Carbon::now()
             ];
@@ -223,40 +222,44 @@ public function postVouchersNos(VoucherNoRequest $request)
       return mt_rand($min,$max);
     }
 
-      //generate a serial number combination
-    public function genSerialNo($batchno){      
-         $exserialnos = new Voucherno;
-
-         //fetch set seral limits
-         $set_serial = new VoucherLimits;
-         $set_serials = $set_serial->where('limit','=','serialno')->first();
-
-           do{
-               $serialnos = $this->generateRandom($set_serials->min,$set_serials->max);
-          }
-          while(!empty($exserialnos->where('serialno','=',$serialnos)->first()));
-          $serial_dig = 6;
-          $num_dig = '%0'.$serial_dig.'d';
-         return sprintf($num_dig,$serialnos);      
-    }
-
-      //generate a voucher number combination
-    public function genVoucherNo(){      
-         $exvouchers = new Voucherno;
+       //generate a voucher number combination
+    public function genVoucherNo(){
+     $exserialnos = new Voucherno; 
          
          //fetch set voucherno limits
          $set_vlimit = new VoucherLimits;
          $set_vlimits = $set_vlimit->where('limit','=','voucherno')->first();
 
-       do{
-          $second = $this->generateRandom(0,9);
-           $vouchernos = $this->generateRandom($set_vlimits->min,$set_vlimits->max).$second;
-         }
-         while(!empty($exvouchers->where('voucherno','=',$vouchernos)->first()));
-          $voucher_dig = 7;
-          $num_digv = '%0'.$voucher_dig.'d';
-         return sprintf($num_digv,$vouchernos);  
+          do{
+      $num1 = mt_rand(1,2147483647);
+      $num_12 = mt_rand(999999,2147483647);
+      $num2 = mt_rand(1,$num_12);
+      $num = $num1.$num2;
+      $x = (int)substr($num, 0, 6);
+      $y = (int)substr($num, -2); 
+      $ran_div = mt_rand(1,99);
+      $z = ($y.$x)/$ran_div;
+     $vouchernos = sprintf('%07d',$z);
+          }
+          while(!empty($exserialnos->where('voucherno','=',$vouchernos)->first()));
+          return $vouchernos;
+
+      
     }
+
+        //generated all voucher numbers duplicates
+    public function getOverallGeneratedDups(){
+      $vouchers = new Voucherno;
+
+      $duplicates = $vouchers
+    ->select('voucherno')
+    ->groupBy('voucherno')
+    ->havingRaw('COUNT(*) > 1')
+    ->get();
+
+        return view('vouchers.overall_duplicates',compact('duplicates'));
+    }
+
 
     //generated voucher numbers duplicates
     public function getGeneratedDups($id){
@@ -269,14 +272,7 @@ public function postVouchersNos(VoucherNoRequest $request)
     ->havingRaw('COUNT(*) > 1')
     ->get();
 
-    $duplicates2 = $vouchers
-    ->select('serialno')
-    ->where('batch_id', $id)
-    ->groupBy('serialno')
-    ->havingRaw('COUNT(*) > 1')
-    ->get();
-
-        return view('vouchers.duplicates',compact('duplicates','duplicates2'));
+        return view('vouchers.duplicates',compact('duplicates'));
     }
 
     public function duplicateExist($id){
@@ -289,16 +285,9 @@ $vouchers = new Voucherno;
     ->havingRaw('COUNT(*) > 1')
     ->get();
 
-    $duplicates2 = $vouchers
-    ->select('serialno')
-    ->where('batch_id', $id)
-    ->groupBy('serialno')
-    ->havingRaw('COUNT(*) > 1')
-    ->get();
+
 
     if ($duplicates->count()) {
-      return true;
-    }elseif ($duplicates2->count()) {
       return true;
     }else{
       return false;

@@ -6,7 +6,9 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\RoleRequest;
 use App\Models\User;
+use App\Models\Loggedin;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller {
 
@@ -33,7 +35,9 @@ class UserController extends Controller {
 
 
 public function getTrail(){
-	return view('users.trail');
+	$log_trail = new Loggedin;
+	$log_trails = $log_trail->get();
+	return view('users.trail',compact('log_trails'));
 	}
 
 	public function getProfile(){

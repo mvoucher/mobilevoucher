@@ -46,7 +46,8 @@ class Kernel extends HttpKernel {
         'client' => \App\Http\Middleware\IsClient::class,
         'program' => \App\Http\Middleware\IsProgram::class,
         'overseer' => \App\Http\Middleware\IsOverseer::class,
-        'field' => \App\Http\Middleware\IsField::class
+        'field' => \App\Http\Middleware\IsField::class,
+        'team' => \App\Http\Middleware\IsTeam::class
 	];
 
 }

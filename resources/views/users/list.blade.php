@@ -11,7 +11,7 @@
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
-				<div class="box-content">
+				<div class="box-content table-responsive">
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
 					<!-- /.dropdown js__dropdown -->
@@ -24,22 +24,22 @@
 								<th>User Type</th>
 								<th>Confirmed</th>
 								<th>Status</th>
-								<th>View : Edit</th>
+								<th>View</th>
 								<th>Ban</th>
 							</tr>
 						</thead>
 						<tbody>
+						@foreach ($users as $user)
 							<tr>
-								<td>....</td>
-								<td>....</td>
-								<td>....</td>
-								<td>....</td>
-								<td>....</td>
-								<td>....</td>
+								<td>{{ $user->name }}</td>
+								<td>{{ $user->username }}</td>
+								<td>{{ $user->email }}</td>
+								<td>{{ $user->role->title }}</td>
+								<td>{{ $user->confirmed }}</td>
+								<td>{{ $user->status }}</td>
 								<td>   
 								<div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
 								<td>
 		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
@@ -47,6 +47,7 @@
         {!! Form::close() !!}
 								</td>
 							</tr>
+						@endforeach
 							
 						</tbody>
 					</table>
