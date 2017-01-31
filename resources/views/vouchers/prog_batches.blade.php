@@ -1,4 +1,5 @@
 @extends('template')
+@inject('voucher_methods', 'App\Http\Controllers\VoucherController')
 
 @include('partials/dtables')
 
@@ -30,12 +31,13 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>Batch No.</th>
-								<th>Voucher Type</th>
-								<th>Quantity @ Price</th>
+								<th class="wd-50">Batch#</th>
+								<th class="wd-120">Voucher Type</th>
+								<th class="wd-150">Quantity @ Price</th>
 								<th>Total</th>
-								<th>Date generated</th>
-								<th>View</th>
+								<th>Left | Set</th>
+								<th>Date</th>
+								<th class="wd-120">View : Top up</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -43,11 +45,16 @@
 							<tr>
 								<td>#{{ $batch->id }}</td>
 								<td>{{ $batch->vouchertype->name }}</td>
-								<td>{{ number_format($batch->quantity) }} @ {{ number_format($batch->vouchertype->value) }}</td>
-								<td>{{ number_format(($batch->quantity)*($batch->vouchertype->value))  }}</td>
+								<td>{{ number_format($voucher_methods->actualVouchInsert($batch->id)) }} @ {{ number_format($batch->vouchertype->value) }}</td>
+								<td>{{ number_format(($voucher_methods->actualVouchInsert($batch->id))*($batch->vouchertype->value))  }}</td>
+								<td>{{ ($batch->quantity)-($voucher_methods->actualVouchInsert($batch->id))}} | {{ $batch->quantity }}</td>
 								<td>{{ date("d-m-Y", strtotime($batch->created_at)) }}</td>
 								<td><div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="{{ url('voucher_batch_detail/'.$batch->id) }}"><i class="fa fa-eye" title="View more"></i></a>
+						 <?php $rem =($batch->quantity)-($voucher_methods->actualVouchInsert($batch->id))  ?>
+						 @if (($batch->quantity)>($voucher_methods->actualVouchInsert($batch->id)) && $rem<500)
+						 	<a class="btn btn-success btn-xs" href="{{ url('voucher_batch_fill/'.$batch->id.'/'.$rem ) }}"><i class="fa fa-plus" title="Top up"></i></a>
+						 @endif
 								</div>
 								</td>
 							</tr>

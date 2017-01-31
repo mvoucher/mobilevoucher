@@ -338,7 +338,11 @@ $home = '#'; ?>
 	{!! HTML::script('assets/plugin/waves/waves.min.js') !!}
 
 	  <script type="text/javascript">
-      $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+      $(".alert-success").fadeTo(14400, 500).slideUp(500, function(){
+    $(".alert-success").slideUp(500);
+});
+
+         $(".alert-warning").fadeTo(14400, 500).slideUp(500, function(){
     $(".alert-success").slideUp(500);
 });
     </script>

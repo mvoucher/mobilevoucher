@@ -18,26 +18,32 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>Batch No.</th>
+								<th class="wd-50">Batch#</th>
 								<th>Voucher Type</th>
 								<th>Quantity</th>
-								<th>Organisation</th>
-								<th>Programme</th>
+								{{-- <th>Organisation</th> --}}
+								<th class="wd-150">Programme</th>
 								<th>Date generated</th>
-								<th>View</th>
+								<th>View : Fault</th>
 							</tr>
 						</thead>
 						<tbody>
-						@foreach ($batches as $batch)
-							<tr>
+						@foreach ($batches as $batch)						
+							<tr bgcolor="">
 								<td>#{{ $batch->id }}</td>
 								<td>{{ $batch->vouchertype->name }}</td>
-								<td>{{ number_format($batch->quantity) }}</td>
-								<td>.....</td>
+								<td>{{ number_format($voucher_methods->actualVouchInsert($batch->id)) }}</td>
+								{{-- <td>{{ number_format($batch->quantity) }}</td> --}}
+								{{-- <td>.....</td> --}}
 								<td>{{ $batch->user->name }}</td>
 								<td>{{ date("d-m-Y", strtotime($batch->created_at)) }}</td>
 								<td><div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="{{ url('voucher_overall_batch_detail/'.$batch->id) }}"><i class="fa fa-eye" title="View more"></i></a>
+
+						 <?php $rem =($batch->quantity)-($voucher_methods->actualVouchInsert($batch->id))  ?>
+						 @if (($batch->quantity)>($voucher_methods->actualVouchInsert($batch->id)))
+						 	<a class="btn btn-danger btn-xs" href="#"><i class="fa fa-close" title="{{$rem}} defaulted vouchers"></i></a>
+						 @endif
 
 						 @if ($voucher_methods->duplicateExist($batch->id))
 						 <a class="btn btn-danger btn-xs" href="{{ url('voucher_duplicates/'.$batch->id) }}"><i class="fa fa-eye" title="View duplicates"></i></a>	

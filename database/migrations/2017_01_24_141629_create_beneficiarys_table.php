@@ -21,8 +21,12 @@ class CreateBeneficiarysTable extends Migration
             $table->string('gender');
             $table->integer('age');            
             $table->string('location');
-            $table->integer('user_id'); //programme id
+            $table->integer('user_id')->unsigned(); //programme id
             $table->timestamps();           
+        });
+
+        Schema::table('beneficiarys', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
     /**

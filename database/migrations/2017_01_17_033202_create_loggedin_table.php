@@ -16,11 +16,16 @@ class CreateLoggedinTable extends Migration
         {  
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->timestamp('last_login_at');
             $table->string('last_login_ip', 45);
             $table->timestamps();           
         });
+
+        Schema::table('loggedins', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
     }
 
     /**

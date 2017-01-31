@@ -5349,3 +5349,40 @@ ul#lang .active {
     table-layout: fixed;
     word-wrap: break-word;
 }
+
+.table-responsive table thead tr th.wd-50{
+    width: 50px;
+}
+.table-responsive table thead tr th.wd-50{
+    width: 80px;
+}
+.table-responsive table thead tr th.wd-100{
+    width: 100px;
+}
+.table-responsive table thead tr th.wd-120{
+    width: 120px;
+}
+.table-responsive table thead tr th.wd-150{
+    width: 150px;
+} 
+.table-responsive table thead tr th.wd-200{
+    width: 200px;
+} 
+.table-responsive table thead tr th.wd-250{
+    width: 250px;
+} 
+.table-responsive table thead tr th.wd-300{
+    width: 300px;
+} 
+.table-responsive table thead tr th.wd-350{
+    width: 350px;
+} 
+.table-responsive table thead tr th.wd-400{
+    width: 400px;
+} 
+.table-responsive table thead tr th.wd-450{
+    width: 450px;
+} 
+.table-responsive table thead tr th.wd-500{
+    width: 500px;
+} 

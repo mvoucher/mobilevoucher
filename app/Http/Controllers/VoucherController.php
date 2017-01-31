@@ -20,7 +20,6 @@ use App\Http\Requests\VoucherNoRequest;
 use App\Models\Voucherno;
 
 use App\Models\Batch;
-use App\Models\VoucherLimits;
 
 use Carbon\Carbon;
 
@@ -154,11 +153,11 @@ class VoucherController extends Controller
    }
 
    //post voucher types
-   public function postOrgTypes(
-      VouchertypesRequest $request){
+   public function postOrgTypes(VouchertypesRequest $request){
 
       $vouchertype = new Vouchertype;
       $vouchertype->name = $request->name;
+      $vouchertype->category = $request->category;
       $vouchertype->color = $request->color;
       $vouchertype->value = $request->value;
       $vouchertype->user_id = auth()->user()->id;
@@ -170,8 +169,7 @@ class VoucherController extends Controller
    }
 
    //post a program voucher types
-   public function postProgVouchers(
-      ProgramVoucherRequest $request){
+   public function postProgVouchers(ProgramVoucherRequest $request){
 
       $prog_voucher = new Programvouchertype;
       $prog_voucher->vouchertype_id = $request->vouchertype_id;
@@ -183,12 +181,19 @@ class VoucherController extends Controller
 
 }
 
+//generate missing vouchers
+public function postMissingVouchers($batch_id, $missing){
+
+      //storend post a all generated numbers
+      $this->storationArry($missing,$batch_id);
+      return redirect()->back()->with('ok','Vouchers successfully generated');
+}
+
 //generating voucher numbers
-public function postVouchersNos(VoucherNoRequest $request)
- {
-
-            $batch = new Batch;
-
+public function postVouchersNos(VoucherNoRequest $request){
+  ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+ 
+        $batch = new Batch;
         $batch->vouchertype_id = $request->type;
         $batch->quantity = $request->number;
         $batch->user_id = auth()->user()->id;
@@ -198,68 +203,60 @@ public function postVouchersNos(VoucherNoRequest $request)
         $batchno = $batch->id;
 
         //get set number of vouchers to generate
-      $qtty = new Batch;
-      $numberofvouchers = $qtty->where('id','=',$batchno)->first();  
+        $numberofvouchers = $batch->where('id','=',$batchno)->first();
+        $max_number =  $numberofvouchers->quantity;  
 
-        for ($i = 0; $i<$numberofvouchers->quantity; $i++) 
+      //storend post a all generated numbers
+      $this->storationArry($max_number,$batchno);
+
+        return redirect('voucher_prog_batches')->with('ok','Vouchers successfully generated. Click the [plus] button in case a batch has defaulted vouchers');
+    }
+
+    //with array that stores the generated numbers and posts them to db
+    public function storationArry($max_number,$batchno){
+              for ($i = 0; $i<$max_number; $i++) 
          {
             $insert[]= [
               'batch_id' => $batchno,
-              'voucherno' => sprintf('%07d',$this->genVoucherNo()),
+              'voucherno' => $this->genVoucherNo(),
                'created_at' => Carbon::now(),
                'updated_at' => Carbon::now()
             ];
-              //$vouchers->save();
          }
+         // Remove the duplicates
+          $output = array_intersect_key($insert, array_unique(array_column($insert, 'voucherno')));
          $vouchers = new Voucherno;
-         $vouchers->insert($insert);
-
-        return redirect('voucher_prog_batches')->with('ok','Vouches successfully generated');
-    }
-
-      //generate a rondom number btn 100 - 999
-    public function generateRandom($min,$max){
-      return mt_rand($min,$max);
+         $vouchers->insert($output);
     }
 
        //generate a voucher number combination
     public function genVoucherNo(){
      $exserialnos = new Voucherno; 
-         
-         //fetch set voucherno limits
-         $set_vlimit = new VoucherLimits;
-         $set_vlimits = $set_vlimit->where('limit','=','voucherno')->first();
 
-         $ran1 =  mt_rand(1,999);
-         $ran2 =  mt_rand(1,999);
-
-      $vouchernos =$ran2.mt_rand(1,9).$ran1;
-
-          if(is_null($exserialnos->where('voucherno','=',$vouchernos)->first())) {
-          return $vouchernos;
-          }else{
- return $vouchernos+1;
-          }
-
-      
+      do{
+          $vouchernos =sprintf('%07d',mt_rand(999,900000));
+      }while (!is_null($exserialnos->where('voucherno','=',$vouchernos)->first()));
+          return $vouchernos;      
     }
 
         //generated all voucher numbers duplicates
     public function getOverallGeneratedDups(){
       $vouchers = new Voucherno;
 
-$duplicates = $vouchers->whereIn('voucherno', function($query)
-    {
-        $query->select('voucherno')
+      $duplicates = $vouchers->whereIn('voucherno', function($query){
+      $query->select('voucherno')
               ->from('vouchernos')
               ->groupBy('voucherno')
-              ->havingRaw('COUNT(voucherno) > 1');
-    })
-    ->get();
-
-   
+              ->havingRaw('COUNT(voucherno) > 1');  })->get();   
 
         return view('vouchers.overall_duplicates',compact('duplicates'));
+    }
+
+    //count the actual number of generated vouchers
+    public function actualVouchInsert($batch_id){
+      $voucherno = new Voucherno;
+      $vouchernos = $voucherno->where('batch_id','=',$batch_id)->count();
+      return $vouchernos;
     }
 
 

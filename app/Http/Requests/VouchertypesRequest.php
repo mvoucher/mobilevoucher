@@ -13,7 +13,8 @@ class VouchertypesRequest extends Request {
 		return [
 			'name' => 'required|max:30|unique:vouchertypes,name'.$id,
 			'color'=>'required',
-			'value' =>'required|numeric|min:2'
+			'value' =>'required|numeric|min:2',
+			'category' => 'required'
 		];
 	}
 

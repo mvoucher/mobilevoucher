@@ -4,8 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Role, 
-	App\Models\User,
-	App\Models\VoucherLimits;
+	App\Models\User;
 
 class DatabaseSeeder extends Seeder {
 
@@ -25,9 +24,6 @@ class DatabaseSeeder extends Seeder {
 		Role::create(['title' => 'Programme Overseer','slug' => 'overseer']);
 		Role::create(['title' => 'Field Officer','slug' => 'field']);
 		Role::create(['title' => 'Team','slug' => 'team']);
-
-		VoucherLimits::create(['limit' => 'voucherno','min' => 99, 'max' => 999,'digits'=>6]);
-		VoucherLimits::create(['limit' => 'serialno','min' => 99, 'max' => 999,'digits'=>6]);
 
 		User::create([
 			'name'=>'Najja Najibula',

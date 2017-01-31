@@ -17,9 +17,14 @@ class CreateProgramVoucherTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('vouchertype_id');
-            $table->integer('org_id'); //creater of that type
+            $table->integer('vouchertype_id')->unsigned();
+            $table->integer('org_id')->unsigned(); //creater of that type
             $table->timestamps();           
+        });
+
+        Schema::table('user_vouchertype', function(Blueprint $table) {
+            $table->foreign('vouchertype_id')->references('id')->on('vouchertypes');
+            $table->foreign('org_id')->references('id')->on('users');
         });
     }
     /**

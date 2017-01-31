@@ -33,6 +33,18 @@
 							</div>
 
 							<div class="form-group">
+							{!! Form::label('category', 'Voucher Category', ['class' => 'col-sm-3 control-label'] )  !!}
+								<div class="col-sm-5">
+							<select class="form-control select2_1" name="category">						
+							<option value="Standard">Standard</option>
+							<option value="Good Farmer">Good Farmer</option>
+							<option value="Dynamic">Dynamic (Custom)</option>
+					</select>								
+								</div>
+								<span class="text-danger">{{ $errors->first('color', ':message') }}</span>
+							</div>
+
+							<div class="form-group">
 							{!! Form::label('color', 'Color', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">
 							<select class="form-control select2_1" name="color">						

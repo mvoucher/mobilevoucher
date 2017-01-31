@@ -24,7 +24,14 @@
 					
 					<!--form goes here -->
 						{!! Form::open(['url' => 'voucher_generating', 'method' => 'post', 'class' => 'form-horizontal','onsubmit'=>'return checkForm(this);']) !!}	
-							
+
+						<div class="alert alert-warning alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert">
+		<span aria-hidden="true">&times;</span>
+		<span class="sr-only">Close</span>
+	</button>
+	Warning: Maximum number of vouchers that can be generated is 10,000. Note that 0.6% vouchers will be defaulted. 
+</div>						
 
 							<div class="form-group">
 							{!! Form::label('type', 'Select voucher type', ['class' => 'col-sm-3 control-label'] )  !!}
@@ -61,17 +68,7 @@
 			</div>
 			<!-- /.col-xs-12 -->
 
-			<?php 
-/*	$num1 = mt_rand(1,2147483647);
-      $num_12 = mt_rand(999999,2147483647);
-      $num2 = mt_rand(1,$num_12);
-      $num = $num1.$num2;
-			$x = (int)substr($num, 0, 6);
-			$y = (int)substr($num, -2); 
-			$ran_div = mt_rand(1,99);
-			$z = ($y.$x)/$ran_div;
-			sprintf('%07d',$z);*/
-			?>
+	
 </div>
 
 

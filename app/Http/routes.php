@@ -88,6 +88,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('voucher_prog_batches', 'VoucherController@getProgBatches');
 	Route::get('voucher_generate', 'VoucherController@getGenerateForm'); //by program
 	Route::post('voucher_generating', 'VoucherController@postVouchersNos'); //by program
+	Route::get('voucher_batch_fill/{batch_id}/{missing}', 'VoucherController@postMissingVouchers'); //by program
 	Route::get('voucher_batch_detail/{id}', 'VoucherController@getBatchDetails'); //by program
 	Route::resource('voucher_prog_destroy', 'VoucherController@postDeleteProgVoucher'); //by program
 	Route::get('voucher_overall_batch_detail/{id}', 'VoucherController@getOverallBatchDetails'); //by admin

@@ -16,11 +16,16 @@ class CreateVoucherTypesTable extends Migration
         {  
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name')->unique();            
+            $table->string('category');
             $table->string('color');
             $table->integer('value'); //money
-            $table->integer('user_id'); //organisation id
+            $table->integer('user_id')->unsigned(); //organisation id
             $table->timestamps();           
+        });
+
+        Schema::table('vouchertypes', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
     /**

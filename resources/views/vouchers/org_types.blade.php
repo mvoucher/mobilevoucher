@@ -31,6 +31,7 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Category</th>
 								<th>Color</th>
 								<th>Value</th>
 								<th>Edit</th>
@@ -41,6 +42,7 @@
 						@foreach ($voucher_types as $voucher_type)
 							<tr>
 								<td>{{ $voucher_type->name }}</td>
+								<td>{{ $voucher_type->category }}</td>
 								<td>{{ $voucher_type->color }}</td>
 								<td>{{ number_format($voucher_type->value) }}</td>
 								<td>   

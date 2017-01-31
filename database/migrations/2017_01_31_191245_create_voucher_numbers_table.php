@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConfigVoucherTable extends Migration
+class CreateVoucherNumbersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,18 @@ class CreateConfigVoucherTable extends Migration
      */
     public function up()
    {
-        Schema::create('voucher_configs', function(Blueprint $table)
+        Schema::create('vouchernos', function(Blueprint $table)
         {  
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('limit');
-            $table->integer('min');
-            $table->integer('max');
-            $table->integer('digits');
+            $table->integer('batch_id')->unsigned();
+            $table->string('voucherno');
+            $table->string('replacement')->nullable();
             $table->timestamps();           
+        });
+
+        Schema::table('vouchernos', function(Blueprint $table) {
+            $table->foreign('batch_id')->references('id')->on('batchs');
         });
     }
     /**
@@ -30,6 +33,6 @@ class CreateConfigVoucherTable extends Migration
      */
     public function down()
     {
-          Schema::drop('voucher_configs');
+          Schema::drop('vouchernos');
     }
 }
