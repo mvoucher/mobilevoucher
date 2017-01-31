@@ -38,7 +38,7 @@
 							<select class="form-control select2_1" name="category">						
 							<option value="Standard">Standard</option>
 							<option value="Good Farmer">Good Farmer</option>
-							<option value="Dynamic">Dynamic (Custom)</option>
+							<option value="Dynamic">Dynamic(Custom)</option>
 					</select>								
 								</div>
 								<span class="text-danger">{{ $errors->first('color', ':message') }}</span>
