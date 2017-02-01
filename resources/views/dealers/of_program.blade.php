@@ -7,7 +7,7 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Our Agro Dealers' ?>
+<?php $page_name = 'Agro Dealers' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
@@ -18,6 +18,7 @@
 						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
 							<li><a href="{{ route('dealer.create') }}">Register Dealer</a></li>
+							<li><a href="{{ url('dealer_import') }}">Import file</a></li>
 						</ul>
 						<!-- /.sub-menu -->
 					</div>
@@ -25,10 +26,12 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>Full Name</th>
+								<th>First name</th>
+								<th>Last name</th>
 								<th>Gender</th>
-								<th>Bate of Birth</th>
-								<th>Location</th>
+								<th>District</th>
+								<th>Sub-county</th>
+								<th>Village</th>
 								<th>MM Phonenumber</th>
 								<th>Edit</th>
 								<th>Delete</th>
@@ -36,6 +39,8 @@
 						</thead>
 						<tbody>
 							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>

@@ -17,7 +17,7 @@
 					<div class="dropdown js__drop_down">
 						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
-							<li><a href="{{ route('dealer.create') }}">Register Dealer</a></li>
+							<li><a href="{{ route('agent.create') }}">Register Dealer</a></li>
 						</ul>
 						<!-- /.sub-menu -->
 					</div>
@@ -25,11 +25,15 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>Full Name</th>
+								<th>First name</th>
+								<th>Last name</th>
 								<th>Gender</th>
-								<th>Bate of Birth</th>
-								<th>Location</th>
+								<th>District</th>
+								<th>Sub-county</th>
+								<th>Village</th>
 								<th>MM Phonenumber</th>
+								<th>Agro Dealer</th>
+								<th>Upload</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
@@ -41,11 +45,18 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>   
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>
+								<div class="btn-group">
+						<a class="btn btn-primary btn-xs" href="{{ url('agent_import') }}"><i class="fa fa-upload" title="Import"></i></a>
+								</div> </td>
+								<td> 
 								<div class="btn-group">
 						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
-								<td>
+								<td> 
 		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
         {!! Form::destroy('Delete', 'Are you sure you want to delete this client') !!}
         {!! Form::close() !!}

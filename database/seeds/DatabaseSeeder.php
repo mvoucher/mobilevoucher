@@ -25,28 +25,72 @@ class DatabaseSeeder extends Seeder {
 		Role::create(['title' => 'Field Officer','slug' => 'field']);
 		Role::create(['title' => 'Team','slug' => 'team']);
 
+
+//Admins
 		User::create([
 			'name'=>'Najja Najibula',
-			'telephone'=>'0702794161',
+			'telephone'=>'0702794162',
 			'country'=>'Uganda',
 			'role_id' => 1,
 			'photo'=>'default.png',
-			'username' => 'Administrator',
-			'email' => 'email@innovate.com',
+			'username' => '',
+			'email' => 'admin@innovate.com', 
 			'password' => bcrypt('admin'),
 			'seen' => true,
 			'confirmed' => true
 		]);
 
+				User::create([
+			'name'=>'Mary Musimire',
+			'telephone'=>'0750132311',
+			'country'=>'Uganda',
+			'role_id' => 1,
+			'photo'=>'default.png',
+			'username' => 'mmusimire',
+			'email' => 'sadmin@gmail.com', 
+			'password' => bcrypt('admin@!nnovate'),
+			'seen' => true,
+			'confirmed' => true
+		]);
+
+//Team members
 		User::create([
-			'name'=>'Mercy Corps',
-			'telephone'=>'0752794162',
+			'name'=>'Evelyn Namara',
+			'telephone'=>'0771366479',
+			'country'=>'Uganda',
+			'role_id' => 6,
+			'photo'=>'default.png',
+			'username' => 'evelyn',
+			'email' => 'enamara@uginnovate.com',
+			'password' => bcrypt('nevelyn@!nnovate'),
+			'seen' => true,
+			'confirmed' => true
+		]);
+
+				User::create([
+			'name'=>'Opio David',
+			'telephone'=>'0783689831',
+			'country'=>'Uganda',
+			'role_id' => 6,
+			'photo'=>'default.png',
+			'username' => 'Obwangamoi',
+			'email' => 'dopio@uginnovate.com',
+			'password' => bcrypt('dopio@!nnovate'),
+			'seen' => true,
+			'confirmed' => true
+		]);
+
+//Test accounts
+
+		User::create([
+			'name'=>'Test Organisation',
+			'telephone'=>'1234567890',
 			'country'=>'Uganda',
 			'role_id' => 2,
 			'photo'=>'default.png',
-			'username' => 'mercycorps',
-			'email' => 'email@mercycorps.com',
-			'password' => bcrypt('mercy'),
+			'username' => 'testorg',
+			'email' => 'email@org.com',
+			'password' => bcrypt('test'),
 			'seen' => true,
 			'confirmed' => true
 		]);
@@ -54,15 +98,29 @@ class DatabaseSeeder extends Seeder {
 
 
 		User::create([
-			'name'=>'Mastercard Foundation',
-			'telephone'=>'0752794163',
-			'country'=>'Zambia',
+			'name'=>'Test Programme',
+			'telephone'=>'0987654321',
+			'country'=>'Uganda',
 			'role_id' => 3,
 			'org_id' => 2,
 			'photo'=>'default.png',
-			'username' => 'mf',
-			'email' => 'email@dynamic.com',
-			'password' => bcrypt('dynamic'),
+			'username' => 'testprog',
+			'email' => 'email@program.com',
+			'password' => bcrypt('test'),
+			'seen' => true,
+			'confirmed' => true
+		]);
+
+				User::create([
+			'name'=>'Test Field',
+			'telephone'=>'5432167890',
+			'country'=>'Uganda',
+			'role_id' => 3,
+			'prog_id' => 2,
+			'photo'=>'default.png',
+			'username' => 'testfield',
+			'email' => 'email@field.com',
+			'password' => bcrypt('test'),
 			'seen' => true,
 			'confirmed' => true
 		]);

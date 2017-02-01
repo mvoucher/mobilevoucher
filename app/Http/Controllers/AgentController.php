@@ -28,4 +28,8 @@ class AgentController extends Controller
    public function create(){
    		return view('agents.create');
    }
+
+      public function getProgAgentImport(){
+      return view('agents.import');
+   }
 }

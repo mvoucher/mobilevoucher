@@ -87,6 +87,14 @@ class RoleRepository {
 		return compact('select_prog');
 	}
 
+			public function getFieldRoles()
+	{
+		$roles = new Role;
+		$select_dtm = $roles->where('id','=',5)->get()->pluck('title', 'id');
+
+		return compact('select_dtm');
+	}
+
 	
 
 }

@@ -14,19 +14,18 @@
 				<div class="box-content table-responsive">
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
-						<table id="example" class="table table-striped table-bordered display" style="width:100%">
+							<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th style="width: 100px">First Name</th>
-								<th style="width: 100px">Last Name</th>
-								<th style="width: 100px">Gender</th>
-								<th style="width: 100px">Age</th>
-								<th style="width: 100px">District</th>
-								<th style="width: 100px">Sub County</th>
-								<th style="width: 100px">Village</th>
-								<th style="width: 100px">No.in H'sehold</th>
-								<th style="width: 100px">Programme</th>
-								<th style="width: 100px">Vou. Serial No</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Gender</th>
+								<th>Age</th>
+								<th>District</th>
+								<th>Sub County</th>
+								<th>Village</th>
+								<th># in Household</th>
+								<th>Voucher Serial No</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -40,8 +39,6 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								
 							</tr>
 							
 						</tbody>

@@ -17,27 +17,24 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>Full Name</th>
+								<th>First name</th>
+								<th>Last name</th>
 								<th>Gender</th>
-								<th>Age</th>
-								<th>Location</th>
+								<th>District</th>
+								<th>Sub-county</th>
+								<th>Village</th>
 								<th>MM Phonenumber</th>
-								<th>Date added</th>
-								<th>View</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>....name</td>
-								<td>....sex</td>
-								<td>....dob</td>
-								<td>....add</td>
-								<td>....mm no</td>
-								<td>....dt</td>
-								<td><div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-								</div>
-								</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 							</tr>
 							
 						</tbody>

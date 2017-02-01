@@ -51,16 +51,24 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('program_invites', 'ProgrammeController@getProgInvites');//by client 
 	Route::post('invite_program', 'ProgrammeController@postInvite');	  //by client
 
+				// Data Manager
+	Route::get('field', ['uses' => 'FieldController@index','as' => 'field']);//program dashboard
+	Route::get('fieldlist', 'FieldController@getFieldms'); //by admin
+	Route::resource('fieldmngr', 'FieldController');//by program
+	Route::get('field_of_prog', 'FieldController@getProgramsField'); //by prog
+	Route::get('field_invites', 'FieldController@getFieldInvites');//by prog 
+	Route::post('invite_fieldmngr', 'FieldController@postInvite');	  //by prog
+
 				// Beneficiary
 	Route::resource('beneficiary', 'BeneficiaryController');
 	Route::get('beneficiarylist', 'BeneficiaryController@getBeneficiaries');//by admin
 	Route::get('beneficiary_of_org', 'BeneficiaryController@getOrgBeneficiaries'); //by client
 	Route::get('beneficiary_of_prog', 'BeneficiaryController@getProgBeneficiaries'); //by program
 	Route::get('beneficiary_import', 'BeneficiaryController@getProgBenefImport');//by program
+	Route::post('importBeneficiaryExcel', 'BeneficiaryController@importExcel'); //importing
 
-	Route::get('downloadExcel/{type}', 'BeneficiaryController@downloadExcel'); //exporting csv and xcl
-	Route::post('importExcel', 'BeneficiaryController@importExcel'); //importing
-	Route::get('exportPDF', 'BeneficiaryController@exportPDF'); //exportg pdf 
+/*	Route::get('downloadExcel/{type}', 'BeneficiaryController@downloadExcel'); //exporting csv and xcl
+	Route::get('exportPDF', 'BeneficiaryController@exportPDF'); //exportg pdf */
 	
 
 					// Agro Dealer
@@ -68,12 +76,14 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('dealerlist', 'DealerController@getDealers');
 	Route::get('dealer_of_org', 'DealerController@getOrgDealers');
 	Route::get('dealer_of_prog', 'DealerController@getProgDealers');
+	Route::get('dealer_import', 'DealerController@getProgDealerImport');//by program
 
-						// Agro Agents
+						// Agents
 	Route::resource('agent', 'AgentController');
 	Route::get('agentlist', 'AgentController@getAgents');
 	Route::get('agent_of_org', 'AgentController@getOrgAgents');
 	Route::get('agent_of_prog', 'AgentController@getProgAgents');
+	Route::get('agent_import', 'AgentController@getProgAgentImport');//by program
 
 	//vouchers 
 	Route::resource('voucher', 'VoucherController');

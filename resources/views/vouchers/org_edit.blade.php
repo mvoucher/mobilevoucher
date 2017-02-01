@@ -5,7 +5,7 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Create Voucher Type' ?>
+<?php $page_name = 'Edit Voucher Type' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
@@ -28,9 +28,21 @@
 							<div class="form-group">
 							{!! Form::label('name', 'Voucher Name', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">
-							{{ Form::text('name',null, ['class' => 'form-control']) }}
+							{{ Form::text('name', null, ['class' => 'form-control','placeholder'=>'Product voucher']) }}
 								</div>
 								<span class="text-danger">{{ $errors->first('name', ':message') }}</span>
+							</div>
+
+							<div class="form-group">
+							{!! Form::label('category', 'Voucher Category', ['class' => 'col-sm-3 control-label'] )  !!}
+								<div class="col-sm-5">
+							<select class="form-control select2_1" name="category">						
+							<option value="Standard">Standard</option>
+							<option value="Good Farmer">Good Farmer</option>
+							<option value="Dynamic">Dynamic(Custom)</option>
+					</select>								
+								</div>
+								<span class="text-danger">{{ $errors->first('color', ':message') }}</span>
 							</div>
 
 							<div class="form-group">
@@ -61,7 +73,7 @@
 
 							<div class="form-group margin-bottom-0">
 								<div class="col-sm-offset-3 col-sm-10">
-									{!! Form::submit('Save',null,'btn btn-info btn-sm ml-15') !!}
+									{!! Form::submit('Save changes',null,'btn btn-info btn-sm ml-15') !!}
 								</div>
 							</div>
 

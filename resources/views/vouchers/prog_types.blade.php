@@ -30,9 +30,9 @@
 							<select class="form-control select2_1" name="vouchertype_id">						
 							@foreach ($voucher_types as $voucher_types)
 								@if ($voucher_methods->getProgramNonImpmtdVou($voucher_types->id))
-									<option value="{{ $voucher_types->id }}" disabled="disabled">{{ $voucher_types->name }} - {{ $voucher_types->color }} @ {{ number_format($voucher_types->value) }})</option>
+									<option value="{{ $voucher_types->id }}" disabled="disabled">{{ $voucher_types->name }} - {{ $voucher_types->category }} @ {{ number_format($voucher_types->value) }}</option>
 								@else
-									<option value="{{ $voucher_types->id }}">{{ $voucher_types->name }} - {{ $voucher_types->color }} @ {{ number_format($voucher_types->value) }})</option>
+									<option value="{{ $voucher_types->id }}">{{ $voucher_types->name }} - {{ $voucher_types->category }} @ {{ number_format($voucher_types->value) }}</option>
 								@endif						
 							@endforeach
 					</select>
@@ -76,6 +76,7 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Category</th>
 								<th>Color</th>
 								<th>Value</th>
 								<th>Delete</th>
@@ -85,6 +86,7 @@
 						@foreach ($imp_voucher as $imp)
 							<tr>
 								<td>{{ $imp->vouchertype->name }}</td>
+								<td>{{ $imp->vouchertype->category }}</td>
 								<td>{{ $imp->vouchertype->color }}</td>
 								<td>{{ number_format($imp->vouchertype->value) }}</td>
 								

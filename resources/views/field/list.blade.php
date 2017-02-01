@@ -1,4 +1,5 @@
 @extends('template')
+@inject('field_methods', 'App\Http\Controllers\FieldController')
 
 @include('partials/dtables')
 
@@ -7,35 +8,30 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Organisation Agro Dealers' ?>
+<?php $page_name = 'List of Field Officers' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
 					<h4 class="box-title">{{-- ..... --}}</h4>
 					<!-- /.box-title -->
-				<table id="example" class="table table-striped table-bordered display" style="width:100%">
+					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>First name</th>
-								<th>Last name</th>
-								<th>Gender</th>
-								<th>District</th>
-								<th>Sub-county</th>
-								<th>Village</th>
-								<th>MM Phonenumber</th>
+								<th>Name</th>
+								<th>Programme</th>
+								<th>Country</th>
+								<th>Date added</th>
 							</tr>
 						</thead>
 						<tbody>
+						@foreach ($programmes_mngr as $program)
 							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
+								<td>{{ $program->name }}</td>
+								<td>{{ $field_methods->getFieldProg($program->prog_id)  }}</td>
+								<td>{{ $program->country }}</td>
+								<td>{{ date("d-m-Y", strtotime($program->created_at)) }}</td>
+							</tr>						@endforeach
 							
 						</tbody>
 					</table>

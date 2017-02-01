@@ -295,14 +295,24 @@ $vouchers = new Voucherno;
     }
 
     //load edit view for voucher types
-    public function edit(Vouchertype $vouchertype){
-          return view('vouchers.org_edit',compact('vouchertype'));
+    public function edit($id){
+      $edit_vtypes = new Vouchertype;
+      $vouchertype = $edit_vtypes->where('id','=',$id)->first();
+      return view('vouchers.org_edit',compact('vouchertype'));
     }
 
     //update voucher type
     public function update(VouchertypesRequest $request,$id){
-
-    }
+        $vouchertype = new Vouchertype;
+      $vouchertype->where('id','=',$id)->update(
+        array(
+      'name' => $request->name,
+      'category' => $request->category,
+      'color' => $request->color,
+      'value' => $request->value
+      ));
+    return redirect('voucher_types_of_org')->with('ok', 'Voucher type updated successfully');
+  }
 
     //delete programme voucher
     public function postDeleteProgVoucher($id){

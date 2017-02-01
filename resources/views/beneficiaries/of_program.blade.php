@@ -18,7 +18,7 @@
 						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
 							<li><a href="{{ route('beneficiary.create') }}">Register Beneficiary</a></li>
-							<li><a href="{{ url('beneficiary_import') }}">Import Beneficiaries</a></li>
+							<li><a href="{{ url('beneficiary_import') }}">Import file</a></li>
 						</ul>
 						<!-- /.sub-menu -->
 					</div>
@@ -42,8 +42,8 @@
 								<th>District</th>
 								<th>Sub County</th>
 								<th>Village</th>
-								<th>No.in H'sehold</th>
-								<th>Vou. Serial No</th>
+								<th># in Household</th>
+								<th>Voucher Serial No</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>

@@ -44,10 +44,17 @@ class UserRepository extends BaseRepository
 
 			if($inputs['invitor_role']==2){
 				$user->org_id = $inputs['invitor_id'];
+			}elseif($inputs['invitor_role']==3){
+				$user->prog_id = $inputs['invitor_id'];
 			}
+
 		}
 
 		$user->save();
+
+		$invites = new Invite;
+		$invites->where('registration_code','=',$inputs['reg_code'])->update(array('response' => 1,'registration_code'=>null));
+
 	}
 
 	

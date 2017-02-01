@@ -92,9 +92,23 @@ $home = '#'; ?>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chemical-weapon"></i><span>Programmes</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if (session('theuser')=='admin')
-						<li {!! classActivePath('programmelist') !!}><a href="{{ url('programmelist') }}">List programmes</a></li>
+						<li {!! classActivePath('programmelist') !!}><a href="{{ url('programmelist') }}">View programmes</a></li>
 					@elseif(session('theuser')=='client')
-						<li {!! classActivePath('programme_of_org') !!}><a href="{{ url('programme_of_org') }}">List Programmes</a></li>
+						<li {!! classActivePath('programme_of_org') !!}><a href="{{ url('programme_of_org') }}">View Programmes</a></li>
+					@endif						
+						</ul>
+					<!-- /.sub-menu js__content -->
+				</li>
+				@endif
+
+					@if (session('theuser')=='admin' || session('theuser')=='program')
+					<li {!! classActiveSegment(1, 'field') !!}>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chemical-weapon"></i><span>Field Officer</span><span class="menu-arrow fa fa-angle-down"></span></a>
+					<ul class="sub-menu js__content">
+					@if (session('theuser')=='admin')
+						<li {!! classActivePath('fieldlist') !!}><a href="{{ url('fieldlist') }}">View Field Officers</a></li>
+					@elseif(session('theuser')=='program')
+						<li {!! classActivePath('field_of_prog') !!}><a href="{{ url('field_of_prog') }}">View Field Officers</a></li>
 					@endif						
 						</ul>
 					<!-- /.sub-menu js__content -->
@@ -106,11 +120,13 @@ $home = '#'; ?>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-worker"></i><span>Beneficiaries</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if (session('theuser')=='admin')
-						<li {!! classActivePath('beneficiarylist') !!}><a href="{{ url('beneficiarylist') }}">List Beneficiaries</a></li>
+						<li {!! classActivePath('beneficiarylist') !!}><a href="{{ url('beneficiarylist') }}">View Beneficiaries</a></li>
 					@elseif(session('theuser')=='client')
-						<li {!! classActivePath('beneficiary_of_org') !!}><a href="{{ url('beneficiary_of_org') }}">List Beneficiaries</a></li>
+						<li {!! classActivePath('beneficiary_of_org') !!}><a href="{{ url('beneficiary_of_org') }}">View Beneficiaries</a></li>
 					@elseif (session('theuser')=='program')
-						<li {!! classActivePath('beneficiary_of_prog') !!}><a href="{{ url('beneficiary_of_prog') }}">List Beneficiaries</a></li>
+						<li {!! classActivePath('beneficiary_of_prog') !!}><a href="{{ url('beneficiary_of_prog') }}">View Beneficiaries</a></li>
+					@elseif (session('theuser')=='field')
+						<li><a href="#">View Beneficiaries</a></li>
 					@endif						
 					</ul>
 					<!-- /.sub-menu js__content -->
@@ -120,71 +136,80 @@ $home = '#'; ?>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-location"></i><span>Agro Dealers</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if (session('theuser')=='admin')
-						<li {!! classActivePath('dealerlist') !!}><a href="{{ url('dealerlist') }}">List Agents</a></li>
+						<li {!! classActivePath('dealerlist') !!}><a href="{{ url('dealerlist') }}">View Dealers</a></li>
 					@elseif (session('theuser')=='client')
-						<li {!! classActivePath('dealer_of_org') !!}><a href="{{ url('dealer_of_org') }}">List Dealers</a></li>
+						<li {!! classActivePath('dealer_of_org') !!}><a href="{{ url('dealer_of_org') }}">View Dealers</a></li>
 					@elseif(session('theuser')=='program')
-						<li {!! classActivePath('dealer_of_prog') !!}><a href="{{ url('dealer_of_prog') }}">List Dealers</a></li>
+						<li {!! classActivePath('dealer_of_prog') !!}><a href="{{ url('dealer_of_prog') }}">View Dealers</a></li>
+					@elseif (session('theuser')=='field')
+						<li><a href="#">View Agro Dealers</a></li>
 					@endif
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
 
 				<li {!! classActiveSegment(1, 'agent') !!}>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-switch"></i><span>Dealer Agents</span><span class="menu-arrow fa fa-angle-down"></span></a>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-switch"></i><span>Agents</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if (session('theuser')=='admin')
-						<li {!! classActivePath('agentlist') !!}><a href="{{ url('agentlist') }}">List Agents</a></li>
+						<li {!! classActivePath('agentlist') !!}><a href="{{ url('agentlist') }}">View Agents</a></li>
 					@elseif (session('theuser')=='client')
-						<li {!! classActivePath('agent_of_org') !!}><a href="{{ url('agent_of_org') }}">List Agents</a></li>
+						<li {!! classActivePath('agent_of_org') !!}><a href="{{ url('agent_of_org') }}">View Agents</a></li>
 					@elseif(session('theuser')=='program')
-						<li {!! classActivePath('agent_of_prog') !!}><a href="{{ url('agent_of_prog') }}">List Agents</a></li>
+						<li {!! classActivePath('agent_of_prog') !!}><a href="{{ url('agent_of_prog') }}">View Agents</a></li>
+					@elseif (session('theuser')=='field')
+						<li><a href="#">View Agents</a></li>
 					@endif
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
 
-				<li {!! classActiveSegment(1, 'voucher') !!}>
+
+					@if (session('theuser')!='field')
+						
+					<li {!! classActiveSegment(1, 'voucher') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-barcode"></i><span>Vouchers</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if (session('theuser')=='admin')
-						<li><a href="{{ url('voucher_types') }}">List types</a></li>
-						<li><a href="{{ url('voucher_batches') }}">List generated</a></li>
-						<li><a href="{{ url('voucher_all_dups') }}">Voucher Replacement</a></li>
+						<li><a href="{{ url('voucher_types') }}">View types</a></li>
+						<li><a href="{{ url('voucher_batches') }}">View generated</a></li>
+						<li><a href="{{ url('voucher_all_dups') }}">View Duplicates</a></li>
 					@elseif (session('theuser')=='client')
-						<li><a href="{{ url('voucher_types_of_org') }}">List types</a></li>						
-						<li><a href="{{ url('voucher_org_batches') }}">List generated</a></li>
+						<li><a href="{{ url('voucher_types_of_org') }}">View types</a></li>						
+						<li><a href="{{ url('voucher_org_batches') }}">View generated</a></li>
 					@elseif(session('theuser')=='program')
-						<li><a href="{{ url('voucher_types_of_prog') }}">List implemented</a></li>
-						<li><a href="{{ url('voucher_prog_batches') }}">List generated</a></li>
+						<li><a href="{{ url('voucher_types_of_prog') }}">view implemented</a></li>
+						<li><a href="{{ url('voucher_prog_batches') }}">View generated</a></li>
 					@endif
 
 
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
+				
 
 				@if (session('theuser')=='admin')
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-envira"></i><span>Products</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="#">List Products</a></li>
-						<li><a href="#">List Varieties</a></li>
+						<li><a href="#">View Products</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
 				@endif
+				
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-cash-multiple"></i><span>Payments</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if(session('theuser')=='client')
-						<li><a href="#">Payment Logs</a></li>
+						<li><a href="#">View Logs</a></li>
 					@elseif(session('theuser')=='program')
-						<li><a href="#">Payment Logs</a></li>
+						<li><a href="#">View Logs</a></li>
 					@endif
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
+
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-convert"></i><span>Redemptions</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
@@ -199,6 +224,19 @@ $home = '#'; ?>
 					<!-- /.sub-menu js__content -->
 				</li>
 
+
+				<li>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chart-areaspline"></i><span>Reports</span><span class="menu-arrow fa fa-angle-down"></span></a>
+					<ul class="sub-menu js__content">
+						<li><a href="#">sub menu 1</a></li>
+						<li><a href="#">Sub menu 2</a></li>
+					</ul>
+					<!-- /.sub-menu js__content -->
+				</li>
+
+					
+@endif {{-- if field officers end --}}
+
 				@if (session('theuser')=='admin')
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-headset"></i><span>Call Center</span><span class="menu-arrow fa fa-angle-down"></span></a>
@@ -208,14 +246,9 @@ $home = '#'; ?>
 					<!-- /.sub-menu js__content -->
 				</li>
 				@endif
-				<li>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chart-areaspline"></i><span>Reports</span><span class="menu-arrow fa fa-angle-down"></span></a>
-					<ul class="sub-menu js__content">
-						<li><a href="#">sub menu 1</a></li>
-						<li><a href="#">Sub menu 2</a></li>
-					</ul>
-					<!-- /.sub-menu js__content -->
-				</li>
+
+
+
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-user"></i><span>Profile</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
@@ -287,22 +320,14 @@ $home = '#'; ?>
 	<!-- /.popup-title -->
 	<div class="content">
 		<ul class="notice-list">
-			<li>
+			{{-- <li>
 				<a href="#">
 					<span class="avatar"><img src="assets/images/avatar-sm-1.jpg" alt=""></span>
 					<span class="name">John Doe</span>
 					<span class="desc">Like your post: “Contact Form 7 Multi-Step”</span>
 					<span class="time">10 min</span>
 				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span class="avatar"><img src="assets/images/avatar-sm-2.jpg" alt=""></span>
-					<span class="name">Anna William</span>
-					<span class="desc">Like your post: “Facebook Messenger”</span>
-					<span class="time">15 min</span>
-				</a>
-			</li>
+			</li> --}}
 		</ul>
 		<!-- /.notice-list -->
 		<a href="#" class="notice-read-more">See more messages <i class="fa fa-angle-down"></i></a>

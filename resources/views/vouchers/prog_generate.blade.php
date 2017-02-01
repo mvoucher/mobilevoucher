@@ -30,7 +30,7 @@
 		<span aria-hidden="true">&times;</span>
 		<span class="sr-only">Close</span>
 	</button>
-	Warning: Maximum number of vouchers that can be generated is 10,000. Note that 0.6% vouchers will be defaulted. 
+	Warning: Maximum number of vouchers that can be generated is 10,000. Note that 0.6% vouchers will be defaulted.  
 </div>						
 
 							<div class="form-group">

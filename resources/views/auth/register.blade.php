@@ -16,7 +16,7 @@
          <!-- /.frm-title -->
         <span class="text-danger">{{ $errors->first('name', ':message') }}</span>
       <div class="frm-input">
-        {{ Form::text('name', null, ['class' => 'frm-inp','placeholder'=>'Organisation Name']) }}
+        {{ Form::text('name', null, ['class' => 'frm-inp','placeholder'=>'Name']) }}
         <i class="fa fa-building frm-ico"></i>
         </div>
       <!-- /.frm-input -->
@@ -39,7 +39,13 @@
         <!-- /.frm-title -->
         <span class="text-danger">{{ $errors->first('usertype', ':message') }}</span>
       <div class="frm-input">
-         {!!  Form::select('usertype', $invite->role_id==1? $select_org:$select_prog,  null, ['class' => 'frm-inp','placeholder'=>'Select category' ]) !!}
+      <?php 
+      if($invite->role_id==1){$user_role = $select_org; }
+      if($invite->role_id==2){$user_role = $select_prog; }
+      if($invite->role_id==3){$user_role = $select_dtm; }
+
+      ?>
+         {!!  Form::select('usertype',$user_role,  null, ['class' => 'frm-inp','placeholder'=>'Select category' ]) !!}
         <i class="fa fa-suitcase frm-ico"></i>
         </div>
       <!-- /.frm-input -->
@@ -95,6 +101,7 @@
        @include('auth/partial/footer')
     {!! Form::text('invitor_role', $invite->role_id, ['class' => 'hpet']) !!}
     {!! Form::text('invitor_id', $invite->user_id, ['class' => 'hpet']) !!}
+    {!! Form::text('reg_code', $reg_code->registration_code, ['class' => 'hpet']) !!}
 
       <!-- /.footer -->
     </div>

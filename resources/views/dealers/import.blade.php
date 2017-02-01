@@ -6,7 +6,7 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Import Beneficiaries file' ?>
+<?php $page_name = 'Import Agro Dealer file' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
@@ -16,7 +16,7 @@
 					<div class="dropdown js__drop_down">
 						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
-							<li><a href="{{ url('beneficiary_of_prog') }}">View Beneficiaries</a></li>
+							<li><a href="{{ url('dealer_of_prog') }}">View Dealers</a></li>
 						</ul>
 						<!-- /.sub-menu -->
 					</div>
@@ -32,7 +32,7 @@
 </div>
 					
 					<!--form goes here -->
-						{!! Form::open(['url' => 'importBeneficiaryExcel', 'method' => 'post', 'class' => '','files'=>true]) !!}
+						{!! Form::open(['url' => 'importExcel', 'method' => 'post', 'class' => '','files'=>true]) !!}
 							<div class="form-group">
 							{!! Form::label('import_file', 'Attach an excel file', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">

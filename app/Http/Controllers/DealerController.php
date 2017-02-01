@@ -28,4 +28,8 @@ class DealerController extends Controller
    public function create(){
    		return view('dealers.create');
    }
+
+   public function getProgDealerImport(){
+         return view('dealers.import');      
+   }
 }

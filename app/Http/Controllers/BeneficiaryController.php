@@ -60,11 +60,16 @@ class BeneficiaryController extends Controller
             foreach ($data as $key => $value) {
                $insert[] = [
                'firstname' => $value->firstname, 
-               'secondname' => $value->secondname,
+               'lastname' => $value->lastname,
                'gender' => $value->gender,
                'age' => $value->age,
-               'location' => $value->location,
-               'user_id' => $value->user_id
+               'district' => $value->district,
+               'sub_county' => $value->sub_county,
+               'village' => $value->village,
+               'no_in_household' => $value->no_in_household,
+               'voucher_serial_no' => $value->voucher_serial_no,
+               'program_id' => auth()->user()->id,
+               'user_id' => auth()->user()->id,
                ];
             }
             if(!empty($insert)){

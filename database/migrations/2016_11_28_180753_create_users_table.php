@@ -17,10 +17,11 @@ class CreateUsersTable extends Migration {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 30);
-            $table->integer('telephone')->unique();
+            $table->string('telephone')->unique();
             $table->string('country');
             $table->integer('role_id')->unsigned();
             $table->integer('org_id')->default(0);
+            $table->integer('prog_id')->default(0);
             $table->string('photo')->nullable();
             $table->string('username', 30)->unique();
             $table->string('email')->unique();

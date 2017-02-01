@@ -7,7 +7,7 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Invited Programmes' ?>
+<?php $page_name = 'Invited Field Officers' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
@@ -17,8 +17,8 @@
 					<div class="dropdown js__drop_down">
 						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
 						<ul class="sub-menu">
-							<li><a href="{{ route('programme.create') }}">Invite Programme</a></li>
-							<li><a href="{{ url('programmelist') }}">List Programmes</a></li>
+							<li><a href="{{ route('fieldmngr.create') }}">Invite Field Officers</a></li>
+							<li><a href="{{ url('field_of_prog') }}">View Field Officers</a></li>
 						</ul>
 						<!-- /.sub-menu -->
 					</div>
@@ -47,7 +47,7 @@
 								<td>{{ $invites->response==1?'Accepted':'Pending' }}</td>
 								
 								<td>
-		{!! Form::open(['method' => 'DELETE', 'route' => ['programme.destroy', 1]]) !!}
+		{!! Form::open(['method' => 'DELETE', 'route' => ['fieldmngr.destroy', 1]]) !!}
         {!! Form::destroy('Cancel', 'Are you sure you want to cancel this invitation') !!}
         {!! Form::close() !!}
 								</td>

@@ -92,8 +92,9 @@ class ProgrammeController extends Controller
    //cancelling an invite to an organisation
       public function destroy(Invite $ivite)
    {
-      $this->invite_gestion->cancelInvite($invite);
-      return redirect('program_invites')->with('ok', 'Invite successfully cancelled');
+      /*$this->invite_gestion->cancelInvite($invite);
+      return redirect('program_invites')->with('ok', 'Invite successfully cancelled');*/
+      return redirect('program_invites')->with('error', 'You cannot cancel the request contact Admin');
    }
 
 }

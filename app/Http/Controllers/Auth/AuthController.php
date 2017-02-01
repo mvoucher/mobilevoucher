@@ -178,11 +178,25 @@ public function getRegister($registration_code)
         }else{
 
 		//get last registered id
-		$invites->where('registration_code','=',$registration_code)->update(array('response' => 1,'registration_code'=>null));
+		$reg_code = $invites->where('registration_code','=',$registration_code)->first();
 	   
-	   return view('auth.register',array_merge(compact('invite'),$this->role_gestion->getOrgRoles(),$this->role_gestion->getProgRoles()));  
+	   return view('auth.register',array_merge(compact('invite','reg_code'),$this->role_gestion->getOrgRoles(),$this->role_gestion->getFieldRoles(),$this->role_gestion->getProgRoles()));  
 	         	
         }
     }
 	
 }
+
+/*$invites = new Invite;
+    	$invite = $invites->where('registration_code', '=', $registration_code)->first();
+
+        if (!$invite) {
+    		return redirect('/');
+        }else{
+
+		//get last registered id
+		$invites->where('registration_code','=',$registration_code)->update(array('response' => 1,'registration_code'=>null));
+	   
+	   return view('auth.register',array_merge(compact('invite'),$this->role_gestion->getOrgRoles(),$this->role_gestion->getProgRoles()));  
+	         	
+        }*/

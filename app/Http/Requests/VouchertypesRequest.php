@@ -9,9 +9,8 @@ class VouchertypesRequest extends Request {
 	 */
 	public function rules()
 	{
-		$id = $this->vouchertype ? ',' . $this->vouchertype : '';
 		return [
-			'name' => 'required|max:30|unique:vouchertypes,name'.$id,
+			'name' => 'required|min:2',
 			'color'=>'required',
 			'value' =>'required|numeric|min:2',
 			'category' => 'required'

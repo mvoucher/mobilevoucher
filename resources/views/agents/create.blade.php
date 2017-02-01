@@ -25,11 +25,19 @@
 					<!--form goes here -->
 						{!! Form::open(['url' => 'invite_organ', 'method' => 'post', 'class' => 'form-horizontal']) !!}	
 							<div class="form-group">
-							{!! Form::label('name', 'Name', ['class' => 'col-sm-3 control-label'] )  !!}
+							{!! Form::label('firstname', 'First Name', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">
-							{{ Form::text('name', null, ['class' => 'form-control','placeholder'=>'Full Name']) }}
+							{{ Form::text('firstname', null, ['class' => 'form-control','placeholder'=>'']) }}
 								</div>
-								<span class="text-danger">{{ $errors->first('name', ':message') }}</span>
+								<span class="text-danger">{{ $errors->first('firstname', ':message') }}</span>
+							</div>	
+
+							<div class="form-group">
+							{!! Form::label('lastname', 'Last Name', ['class' => 'col-sm-3 control-label'] )  !!}
+								<div class="col-sm-5">
+							{{ Form::text('lastname', null, ['class' => 'form-control','placeholder'=>'']) }}
+								</div>
+								<span class="text-danger">{{ $errors->first('lastname', ':message') }}</span>
 							</div>
 
 							<div class="form-group">
@@ -46,7 +54,7 @@
 							  </div>
 							</div>
 
-							<div class="form-group">
+							{{-- <div class="form-group">
 							{!! Form::label('dob', 'Date of Birth', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">
 								<div class="input-group">
@@ -55,22 +63,48 @@
 								</div>
 								</div>
 								<span class="text-danger">{{ $errors->first('dob', ':message') }}</span>
+							</div> --}}
+
+
+
+							<div class="form-group">
+							{!! Form::label('age', 'Age', ['class' => 'col-sm-3 control-label'] )  !!}
+								<div class="col-sm-5">
+							{{ Form::text('age', null, ['class' => 'form-control','placeholder'=>'']) }}
+								</div>
+								<span class="text-danger">{{ $errors->first('age', ':message') }}</span>
 							</div>
 
 							<div class="form-group">
-							{!! Form::label('location', 'Location', ['class' => 'col-sm-3 control-label'] )  !!}
+							{!! Form::label('district', 'District', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">
-							{{ Form::text('location', null, ['class' => 'form-control','placeholder'=>'Location']) }}
+							{{ Form::text('district', null, ['class' => 'form-control','placeholder'=>'']) }}
 								</div>
-								<span class="text-danger">{{ $errors->first('location', ':message') }}</span>
+								<span class="text-danger">{{ $errors->first('district', ':message') }}</span>
 							</div>
 
 							<div class="form-group">
-							{!! Form::label('mm_number', 'Mobile Money number', ['class' => 'col-sm-3 control-label'] )  !!}
+							{!! Form::label('sub_county', 'Sub county', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">
-							{{ Form::text('mm_number', null, ['class' => 'form-control','placeholder'=>'2567xxxxxxxx']) }}
+							{{ Form::text('sub_county', null, ['class' => 'form-control','placeholder'=>'']) }}
 								</div>
-								<span class="text-danger">{{ $errors->first('mm_number', ':message') }}</span>
+								<span class="text-danger">{{ $errors->first('sub_county', ':message') }}</span>
+							</div>
+
+							<div class="form-group">
+							{!! Form::label('village', 'Village', ['class' => 'col-sm-3 control-label'] )  !!}
+								<div class="col-sm-5">
+							{{ Form::text('village', null, ['class' => 'form-control','placeholder'=>'']) }}
+								</div>
+								<span class="text-danger">{{ $errors->first('village', ':message') }}</span>
+							</div>
+
+							<div class="form-group">
+							{!! Form::label('mm_phonenumber', 'Mobile Money Phonenumber', ['class' => 'col-sm-3 control-label'] )  !!}
+								<div class="col-sm-5">
+							{{ Form::text('mm_phonenumber', null, ['class' => 'form-control','placeholder'=>'256702794162']) }}
+								</div>
+								<span class="text-danger">{{ $errors->first('mm_phonenumber', ':message') }}</span>
 							</div>
 
 							<div class="form-group margin-bottom-0">

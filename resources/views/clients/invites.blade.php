@@ -35,7 +35,6 @@
 								<th>Name</th>
 								<th>email</th>
 								<th>Status</th>
-								<th>View : Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -47,13 +46,9 @@
 								<td>{{ $invites->name }}</td>
 								<td>{{ $invites->email }}</td>
 								<td>{{ $invites->response==1?'Accepted':'Pending' }} </td>
-								<td>   
-								<div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
-								</div></td>
+								
 								<td>
-		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', $invites->id]]) !!}
+		{!! Form::open(['method' => 'DELETE', 'route' => ['organisation.destroy', $invites->id]]) !!}
         {!! Form::destroy('Cancel', 'Are you sure you want to cancel this invitation') !!}
         {!! Form::close() !!}
 								</td>
