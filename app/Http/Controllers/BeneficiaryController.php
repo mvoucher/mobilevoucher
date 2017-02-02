@@ -67,17 +67,7 @@ class BeneficiaryController extends Controller
    }
 
 
-//Suppose you have more than one sheet in a workbook, you will have additional foreach to iterate over sheets as below
-/*   Excel::load(Input::file('file'), function ($reader) {
-
-     $reader->each(function($sheet) {    
-         foreach ($sheet->toArray() as $row) {
-            User::firstOrCreate($row);
-         }
-     });
-});*/
-
-   public function importExcel(
+  public function importExcel(
       FileImportRequest $request
       ){
       if($request->hasFile('import_file')){
