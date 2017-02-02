@@ -11,13 +11,13 @@
 @stop
 
 @section('main')
-<?php $page_name = 'Implemented Voucher Types' ?>
+<?php $page_name = 'Selected Voucher Types' ?>
 
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
+					{{-- <h4 class="box-title">.....</h4>
+					<!-- /.box-title --> --}}
 										
 					<!--form goes here -->
 						{!! Form::open(['url' => 'voucher_implement_type', 'method' => 'post', 'class' => 'form-horizontal']) !!}	
@@ -57,17 +57,7 @@
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('voucher.create') }}">Create New Type</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
-
+					
 									 @if(session()->has('ok'))
     @include('partials/error', ['type' => 'success', 'message' => session('ok')])
   @endif

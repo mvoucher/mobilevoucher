@@ -9,21 +9,21 @@
 <?php $page_name = 'Register beneficiary' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ url('beneficiary_of_prog') }}"><button class="btn btn-xs btn-primary">View Beneficiaries</button></a>
+		<a href="{{ url('beneficiary_import') }}"><button class="btn btn-xs btn-primary">Import Excel file</button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ url('beneficiary_of_prog') }}">List Beneficiaries</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+					
 					
 					<!--form goes here -->
-						{!! Form::open(['url' => 'invite_organ', 'method' => 'post', 'class' => 'form-horizontal']) !!}	
+						{!! Form::open(['url' => 'register_benef', 'method' => 'post', 'class' => 'form-horizontal']) !!}	
 							<div class="form-group">
 							{!! Form::label('firstname', 'First Name', ['class' => 'col-sm-3 control-label'] )  !!}
 								<div class="col-sm-5">

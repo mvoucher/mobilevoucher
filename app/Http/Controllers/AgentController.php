@@ -32,4 +32,8 @@ class AgentController extends Controller
       public function getProgAgentImport(){
       return view('agents.import');
    }
+
+   public function destroy(){
+      return redirect()->back()->with('ok','Dealer Agent successfully deleted');
+   }
 }

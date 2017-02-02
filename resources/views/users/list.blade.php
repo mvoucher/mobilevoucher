@@ -12,9 +12,7 @@
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<!-- /.dropdown js__dropdown -->
+					
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
@@ -24,7 +22,6 @@
 								<th>User Type</th>
 								<th>Confirmed</th>
 								<th>Status</th>
-								<th>View</th>
 								<th>Ban</th>
 							</tr>
 						</thead>
@@ -35,12 +32,8 @@
 								<td>{{ $user->username }}</td>
 								<td>{{ $user->email }}</td>
 								<td>{{ $user->role->title }}</td>
-								<td>{{ $user->confirmed }}</td>
-								<td>{{ $user->status }}</td>
-								<td>   
-								<div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-								</div></td>
+								<td>{{ $user->confirmed==1?'Yes':'No' }}</td>
+								<td>{{ $user->status==1?'Active':'Banned' }}</td>
 								<td>
 		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
         {!! Form::destroy('Ban', 'Are you sure you want to ban this user') !!}

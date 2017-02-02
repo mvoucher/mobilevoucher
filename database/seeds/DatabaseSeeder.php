@@ -4,7 +4,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Role, 
-	App\Models\User;
+	App\Models\User, 
+	App\Models\Product;
 
 class DatabaseSeeder extends Seeder {
 
@@ -21,9 +22,31 @@ class DatabaseSeeder extends Seeder {
 		Role::create(['title' => 'Administrator','slug' => 'admin']);
 		Role::create(['title' => 'Organisation','slug' => 'client']);
 		Role::create(['title' => 'Programme','slug' => 'program']);
-		Role::create(['title' => 'Programme Overseer','slug' => 'overseer']);
+		Role::create(['title' => 'Programme Manager','slug' => 'overseer']);
 		Role::create(['title' => 'Field Officer','slug' => 'field']);
-		Role::create(['title' => 'Team','slug' => 'team']);
+		Role::create(['title' => 'Innovate Team','slug' => 'team']);
+
+		Product::create(['name' => 'Maize','slug' => 'maize','category' => 'Cereal']);
+		Product::create(['name' => 'Sorghum','slug' => 'sorghum','category' => 'Cereal']);
+		Product::create(['name' => 'Millet','slug' => 'millet','category' => 'Cereal']);
+		Product::create(['name' => 'Sunflower','slug' => 'sunflower','category' => 'Cereal']);
+		Product::create(['name' => 'Oilseeds','slug' => 'oilseeds','category' => 'Cereal']);
+
+		Product::create(['name' => 'Beans','slug' => 'beans','category' => 'Legume']);
+		Product::create(['name' => 'Ground nuts','slug' => 'ground_nuts','category' => 'Legume']);
+		Product::create(['name' => 'Cow Peas','slug' => 'cow_peas','category' => 'Legume']);
+		Product::create(['name' => 'Green Peas','slug' => 'green_peas','category' => 'Legume']);
+		Product::create(['name' => 'Soya Beans','slug' => 'soya_beans','category' => 'Legume']);
+
+		Product::create(['name' => 'Carrot','slug' => 'carrot','category' => 'Vegetable']);
+		Product::create(['name' => 'Collard Greens','slug' => 'collard_greens','category' => 'Vegetable']);
+		Product::create(['name' => 'Egg-Plant','slug' => 'egg_plant','category' => 'Vegetable']);
+		Product::create(['name' => 'Green Pepper','slug' => 'green_pepper','category' => 'Vegetable']);
+		Product::create(['name' => 'Kale','slug' => 'kale','category' => 'Vegetable']);
+		Product::create(['name' => 'Onion','slug' => 'onion','category' => 'Vegetable']);
+		Product::create(['name' => 'Spinach','slug' => 'spinach','category' => 'Vegetable']);
+		Product::create(['name' => 'Tomatoes','slug' => 'tomatoes','category' => 'Vegetable']);
+		Product::create(['name' => 'Watermelon','slug' => 'watermelon','category' => 'Vegetable']);
 
 
 //Admins
@@ -33,7 +56,7 @@ class DatabaseSeeder extends Seeder {
 			'district'=>'Kampala',
 			'role_id' => 1,
 			'photo'=>'default.png',
-			'username' => '',
+			'username' => 'nsnajib',
 			'email' => 'admin@innovate.com', 
 			'password' => bcrypt('admin'),
 			'seen' => true,
@@ -106,6 +129,19 @@ class DatabaseSeeder extends Seeder {
 			'photo'=>'default.png',
 			'username' => 'testprog',
 			'email' => 'email@program.com',
+			'password' => bcrypt('test'),
+			'seen' => true,
+			'confirmed' => true
+		]);
+				User::create([
+			'name'=>'Test Programme2',
+			'telephone'=>'09876543221',
+			'district'=>'Kampala',
+			'role_id' => 3,
+			'org_id' => 5,
+			'photo'=>'default.png',
+			'username' => 'testprog2',
+			'email' => 'email@program2.com',
 			'password' => bcrypt('test'),
 			'seen' => true,
 			'confirmed' => true

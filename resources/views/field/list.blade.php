@@ -13,8 +13,7 @@
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
+				
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>

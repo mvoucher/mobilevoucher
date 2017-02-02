@@ -300,6 +300,7 @@ class ComposerStaticInitf46190fad838f4c6bcfb454aa8cd8154
         'Canvas' => __DIR__ . '/..' . '/dompdf/dompdf/include/canvas.cls.php',
         'Canvas_Factory' => __DIR__ . '/..' . '/dompdf/dompdf/include/canvas_factory.cls.php',
         'Cellmap' => __DIR__ . '/..' . '/dompdf/dompdf/include/cellmap.cls.php',
+        'CreateActivityLogTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_02_060827_create_activity_log_table.php',
         'CreateAgentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_01_113718_create_agents_table.php',
         'CreateBatchesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_164711_create_batches_table.php',
         'CreateBeneficiariesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_01_133505_create_beneficiaries_table.php',

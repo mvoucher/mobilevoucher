@@ -1396,8 +1396,9 @@ h4 strong {
     color: #ffffff
 }
 
-.navigation .menu>li.current .current>a {
-    color: #821622
+.navigation .menu > li.current .current > a {
+    color: #821622;
+    font-weight: bold !important;
 }
 
 .navigation .menu>li.current .sub-menu {

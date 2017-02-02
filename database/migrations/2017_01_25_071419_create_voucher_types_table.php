@@ -16,7 +16,7 @@ class CreateVoucherTypesTable extends Migration
         {  
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->unique();            
+            $table->string('name');            
             $table->string('category');
             $table->string('color');
             $table->integer('value'); //money

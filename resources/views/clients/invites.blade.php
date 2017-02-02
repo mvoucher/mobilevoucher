@@ -9,19 +9,20 @@
 @section('main')
 <?php $page_name = 'Invited Organisations' ?>
 
+
+<div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="">{{ route('organisation.create') }}<button class="btn btn-xs btn-primary">Invite New Organisation</button></a>
+		<a href="{{ url('organisationlist') }}"><button class="btn btn-xs btn-primary">View Registered Organisations </button></a>
+</div>
+</div>
+</div>
+
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('organisation.create') }}">Invite Organisation</a></li>
-							<li><a href="{{ url('organisationlist') }}">List Organisations</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
+				
 
  @if(session()->has('ok'))
     @include('partials/error', ['type' => 'success', 'message' => session('ok')])

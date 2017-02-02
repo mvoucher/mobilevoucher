@@ -13,8 +13,7 @@
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
+					
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
@@ -22,7 +21,6 @@
 								<th>Organisation</th>
 								<th>District</th>
 								<th>Date added</th>
-								<th>View</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,12 +29,9 @@
 								<td>{{ $program->name }}</td>
 								<td>{{ $program_methods->getProgOrganisation($program->org_id)  }}</td>
 								<td>{{ $program->district }}</td>
-								<td>{{ date("d-m-Y", strtotime($program->created_at)) }}</td>
-								<td><div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-								</div>
-								</td>
-							</tr>						@endforeach
+								<td>{{ date("d-m-Y", strtotime($program->created_at)) }}</td>					
+							</tr>	
+							@endforeach
 							
 						</tbody>
 					</table>

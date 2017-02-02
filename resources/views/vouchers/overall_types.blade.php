@@ -12,31 +12,30 @@
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
+					
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
 								<th>Organisation</th>
 								<th>Voucher Name</th>
+								<th>Category</th>
 								<th>Color</th>
 								<th>Value</th>
 								<th>Date added</th>
-								<th>View</th>
 							</tr>
 						</thead>
 						<tbody>
+							
+						@foreach ($voucher_types as $voucher_type)
 							<tr>
-								<td>....org</td>
-								<td>....name</td>
-								<td>....country</td>
-								<td>.....</td>
-								<td>.....</td>
-								<td><div class="btn-group">
-						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
-								</div>
-								</td>
+							<td>{{ $voucher_type->user->name }}</td>
+								<td>{{ $voucher_type->name }}</td>
+								<td>{{ $voucher_type->category }}</td>
+								<td>{{ $voucher_type->color }}</td>
+								<td>{{ number_format($voucher_type->value) }}</td>
+								<td>{{ date("d-m-Y", strtotime($voucher_type->created_at)) }}</td>
 							</tr>
+						@endforeach
 							
 						</tbody>
 					</table>

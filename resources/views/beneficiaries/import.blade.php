@@ -12,7 +12,7 @@
 <div class="col-xs-12">
 <div class="top-content">
 		<a href="{{ url('beneficiary_of_prog') }}"><button class="btn btn-xs btn-primary">View Beneficiaries </button></a>
-		<a href=""><button class="btn btn-xs btn-primary">Download Excel Template</button></a>
+		<a href="{{ asset('packages/Beneficiary.xlsx') }}"><button class="btn btn-xs btn-primary">Download Excel Template</button></a>
 </div>
 </div>
 </div>

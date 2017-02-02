@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\FileImportRequest;
-
+use App\Http\Requests\BeneficiaryRequest;
 use App\Models\Beneficiary;
 
 use Excel;
@@ -38,6 +38,34 @@ class BeneficiaryController extends Controller
       return view('beneficiaries.import');
    }
 
+   public function postBenef(BeneficiaryRequest $request){
+
+      if(session('theuser')=='program'){
+         $program_id = auth()->user()->id;
+         $user_id = auth()->user()->id;
+      }
+      elseif(session('theuser')=='field'){
+         $program_id = auth()->user()->prog_id;
+         $user_id = auth()->user()->id;         
+      }
+
+      $benefic = new Beneficiary;
+      $beneficiary->firstname = $request->firstname;
+      $beneficiary->lastname = $request->lastname;
+      $beneficiary->gender = $request->gender;
+      $beneficiary->district = $request->district;
+      $beneficiary->sub_county = $request->sub_county;
+      $beneficiary->village = $request->village;
+      $beneficiary->no_in_household = $request->no_in_household;
+      $beneficiary->voucher_serial_no = $request->voucher_serial_no;
+      $beneficiary->program_id = $program_id;
+      $beneficiary->user_id = $user_id;
+      $beneficiary->save();
+
+      return redirect('beneficiary_of_prog')->with('ok','Beneficiary successfully added');
+
+   }
+
 
 //Suppose you have more than one sheet in a workbook, you will have additional foreach to iterate over sheets as below
 /*   Excel::load(Input::file('file'), function ($reader) {
@@ -54,6 +82,17 @@ class BeneficiaryController extends Controller
       ){
       if($request->hasFile('import_file')){
          $path = $request->file('import_file')->getRealPath();
+
+         //who uploaded and where the uploaded belong
+      if(session('theuser')=='program'){
+         $program_id = auth()->user()->id;
+         $user_id = auth()->user()->id;
+      }
+      elseif(session('theuser')=='field'){
+         $program_id = auth()->user()->prog_id;
+         $user_id = auth()->user()->id;         
+      }
+
          $data = Excel::load($path, function($reader) {
          })->get();
          if(!empty($data) && $data->count()){
@@ -68,8 +107,8 @@ class BeneficiaryController extends Controller
                'village' => $value->village,
                'no_in_household' => $value->no_in_household,
                'voucher_serial_no' => $value->voucher_serial_no,
-               'program_id' => auth()->user()->id,
-               'user_id' => auth()->user()->id,
+               'program_id' => $program_id,
+               'user_id' => $user_id,
                ];
             }
             if(!empty($insert)){

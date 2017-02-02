@@ -10,9 +10,7 @@
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-
+					
 					  @if(session()->has('error'))
                     @include('partials/error', ['type' => 'danger', 'message' => session('error')])
                 @endif 

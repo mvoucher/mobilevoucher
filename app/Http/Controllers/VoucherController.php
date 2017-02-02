@@ -46,7 +46,9 @@ class VoucherController extends Controller
 
 //all types in the system
    public function getOverallTypes(){
-      return view('vouchers.overall_types');
+         $voucher_type = new Vouchertype;
+      $voucher_types = $voucher_type->get();
+      return view('vouchers.overall_types',compact('voucher_types'));
    }
 
 //all the batches in the system
@@ -58,7 +60,6 @@ class VoucherController extends Controller
 
 //fetch voucher types of tht org
    public function getOrgTypes(){
-
       $voucher_type = new Vouchertype;
       $org_id = auth()->user()->id;
       $voucher_types = $voucher_type->where('user_id','=',$org_id)->get();
@@ -88,12 +89,25 @@ class VoucherController extends Controller
 
       //fetch vouchers of my organisation only by org id
       $my_org = auth()->user()->org_id;
-
       $voucher_type = new Vouchertype;
-
       $voucher_types = $voucher_type->where('user_id','=',$my_org)->get();
       return view('vouchers.prog_types',array_merge(compact('voucher_types'),$this->getProgramImplementedVoucher()));
    }
+
+     //vouchers implemented by a an org's programme
+   public function selectedOrgTypes(){
+    $impltd = new Programvouchertype;
+    $get_impltd = $impltd->where('org_id','=',auth()->user()->id)->get();
+    return view('vouchers.org_choices',array_merge(compact('get_impltd')));
+   }
+
+        //vouchers implemented by a overall programmes
+   public function allSelectedOrgTypes(){
+    $impltd = new Programvouchertype;
+    $get_impltd = $impltd->get();
+    return view('vouchers.overall_choices',array_merge(compact('get_impltd')));
+   }
+   
 
 //vouchers a program has subscribed to
    public function getProgramImplementedVoucher(){
@@ -325,6 +339,10 @@ $vouchers = new Voucherno;
 
       return redirect()->back()->with('ok','You have successfully unsubscribed');
 
+    }
+
+    public function destroy(){
+      return redirect()->back()->with('ok','You have successfully deleted voucher type');
     }
 
 

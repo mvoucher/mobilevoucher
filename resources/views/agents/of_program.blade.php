@@ -10,18 +10,18 @@
 <?php $page_name = 'Agents' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('agent.create') }}"><button class="btn btn-xs btn-primary"> Register Agent</button></a>
+		<a href="{{ url('agent_import') }}"><button class="btn btn-xs btn-primary">Import Excel File </button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('agent.create') }}">Register Dealer</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+					
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
@@ -33,7 +33,6 @@
 								<th>Village</th>
 								<th>MM Phonenumber</th>
 								<th>Agro Dealer</th>
-								<th>Upload</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
@@ -48,16 +47,13 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>
-								<div class="btn-group">
-						<a class="btn btn-primary btn-xs" href="{{ url('agent_import') }}"><i class="fa fa-upload" title="Import"></i></a>
-								</div> </td>
+								
 								<td> 
 								<div class="btn-group">
 						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
 								<td> 
-		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
+		{!! Form::open(['method' => 'DELETE', 'route' => ['agent.destroy', 1]]) !!}
         {!! Form::destroy('Delete', 'Are you sure you want to delete this client') !!}
         {!! Form::close() !!}
 								</td>

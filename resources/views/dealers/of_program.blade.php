@@ -10,19 +10,18 @@
 <?php $page_name = 'Agro Dealers' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('dealer.create') }}"><button class="btn btn-xs btn-primary"> Register Agro Dealer</button></a>
+		<a href="{{ url('dealer_import') }}"><button class="btn btn-xs btn-primary">Import Excel file </button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('dealer.create') }}">Register Dealer</a></li>
-							<li><a href="{{ url('dealer_import') }}">Import file</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+					
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
@@ -32,7 +31,8 @@
 								<th>District</th>
 								<th>Sub-county</th>
 								<th>Village</th>
-								<th>MM Phonenumber</th>
+								<th>MM Phonenumber</th>								
+								<th>Add Agent</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
@@ -48,11 +48,15 @@
 								<td>&nbsp;</td>
 								<td>   
 								<div class="btn-group">
+						<a class="btn btn-success btn-xs" href="#"><i class="fa fa-plus" title="Edit"></i></a>
+								</div></td>
+								<td>   
+								<div class="btn-group">
 						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
 								<td>
-		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', 1]]) !!}
-        {!! Form::destroy('Delete', 'Are you sure you want to delete this client') !!}
+		{!! Form::open(['method' => 'DELETE', 'route' => ['dealer.destroy', 1]]) !!}
+        {!! Form::destroy('Delete', 'Are you sure you want to delete this dealer') !!}
         {!! Form::close() !!}
 								</td>
 							</tr>

@@ -31,6 +31,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Models\Voucherno');
 	}
 
+public function activities() 
+	{
+		return $this->hasMany('App\Models\ActivityLog');
+	}
+
 
 
 }

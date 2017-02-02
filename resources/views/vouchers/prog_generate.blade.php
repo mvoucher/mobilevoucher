@@ -9,19 +9,18 @@
 <?php $page_name = 'Generate Vouchers' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ url('voucher_prog_batches') }}"><button class="btn btn-xs btn-primary">View Generated vouchers</button></a>
+		{{-- <a href=""><button class="btn btn-xs btn-primary"> </button></a> --}}
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ url('voucher_prog_batches') }}">List generated vouchers</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
-					
+										
 					<!--form goes here -->
 						{!! Form::open(['url' => 'voucher_generating', 'method' => 'post', 'class' => 'form-horizontal','onsubmit'=>'return checkForm(this);']) !!}	
 

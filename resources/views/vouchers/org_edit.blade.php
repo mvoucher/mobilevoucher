@@ -8,18 +8,18 @@
 <?php $page_name = 'Edit Voucher Type' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ url('voucher_types_of_org') }}"><button class="btn btn-xs btn-primary">View Voucher Types </button></a>
+		<a href=""><button class="btn btn-xs btn-primary"> </button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ url('voucher_types_of_org') }}">List Types</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+					
 					
 					<!--form goes here -->
 						 {!! Form::model($vouchertype, ['route' => ['voucher.update', $vouchertype->id], 'method' => 'put', 'class' => 'form-horizontal']) !!}

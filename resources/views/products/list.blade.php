@@ -9,6 +9,16 @@
 @section('main')
 <?php $page_name = 'List of Agro Dealers' ?>
 
+@if (session('theuser')=='admin')
+<div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('productlist.create') }}"><button class="btn btn-xs btn-primary">Add New Product</button></a>
+</div>
+</div>
+</div>
+@endif
+
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
@@ -16,27 +26,27 @@
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
-								<th>First name</th>
-								<th>Last name</th>
-								<th>Gender</th>
-								<th>District</th>
-								<th>Sub-county</th>
-								<th>Village</th>
-								<th>MM Phonenumber</th>
-								<th>Programme</th>
+								<th>#</th>
+								<th>Product Name</th>
+								<th>Category</th>
+								@if (session('theuser')=='admin')
+								<th width="50px">Edit</th>
+								<th width="50px">Delete</th>
+								@endif
 							</tr>
 						</thead>
 						<tbody>
+						@foreach ($get_pdts as $product)
 							<tr>
+								<td>{{ $product->id }}</td>
+								<td>{{ $product->name }}</td>
+								<td>{{ $product->category }}</td>
+								@if (session('theuser')=='admin')
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
+								@endif
 							</tr>
+							@endforeach
 							
 						</tbody>
 					</table>

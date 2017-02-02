@@ -7,6 +7,15 @@
 @elseif(session('theuser') == 'program')
 	<?php $active = 'program';
 	$home = url('program'); ?>
+@elseif(session('theuser') == 'field')
+	<?php $active = 'field';
+	$home = url('field'); ?>
+@elseif(session('theuser') == 'team')
+	<?php $active = 'team';
+	$home = url('team'); ?>
+@elseif(session('theuser') == 'overseer')
+	<?php $active = 'overseer';
+	$home = url('overseer'); ?>
 @else
 <?php $active ='';
 $home = '#'; ?>
@@ -56,7 +65,7 @@ $home = '#'; ?>
 			<div class="control-wrap js__drop_down">
 				<i class="fa fa-caret-down js__drop_down_button"></i>
 				<div class="control-list">
-					<div class="control-item"><a href="{{ url('my_profile') }}"><i class="fa fa-user"></i> Profile</a></div>
+					<div class="control-item"><a href="{{ url('profile_my_profile') }}"><i class="fa fa-user"></i> Profile</a></div>
 					<div class="control-item"><a href="{{ url('auth/logout') }}"><i class="fa fa-sign-out"></i> Log out</a></div>
 				</div>
 				<!-- /.control-list -->
@@ -77,21 +86,21 @@ $home = '#'; ?>
 					<a class="waves-effect" href="{{ $home }}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
 				</li>
 
-				@if (session('theuser')=='admin')
+				@if (session('theuser')=='admin' || session('theuser')=='team')
 					<li {!! classActiveSegment(1, 'organisation') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-card-details"></i><span>Organisations</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li {!! classActivePath('organisationlist') !!}><a href="{{ url('organisationlist') }}">List organisations</a></li>
+						<li {!! classActivePath('organisationlist') !!}><a href="{{ url('organisationlist') }}">View organisations</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
 				@endif
 
-				@if (session('theuser')=='admin' || session('theuser')=='client')
+				@if (session('theuser')=='admin' || session('theuser')=='client' || session('theuser')=='team')
 					<li {!! classActiveSegment(1, 'programme') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chemical-weapon"></i><span>Programmes</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-					@if (session('theuser')=='admin')
+					@if (session('theuser')=='admin' || session('theuser')=='team')
 						<li {!! classActivePath('programmelist') !!}><a href="{{ url('programmelist') }}">View programmes</a></li>
 					@elseif(session('theuser')=='client')
 						<li {!! classActivePath('programme_of_org') !!}><a href="{{ url('programme_of_org') }}">View Programmes</a></li>
@@ -101,11 +110,11 @@ $home = '#'; ?>
 				</li>
 				@endif
 
-					@if (session('theuser')=='admin' || session('theuser')=='program')
+					@if (session('theuser')=='admin' || session('theuser')=='program' || session('theuser')=='team')
 					<li {!! classActiveSegment(1, 'field') !!}>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chemical-weapon"></i><span>Field Officers</span><span class="menu-arrow fa fa-angle-down"></span></a>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-walk"></i><span>Field Officers</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-					@if (session('theuser')=='admin')
+					@if (session('theuser')=='admin' || session('theuser')=='team')
 						<li {!! classActivePath('fieldlist') !!}><a href="{{ url('fieldlist') }}">View Field Officers</a></li>
 					@elseif(session('theuser')=='program')
 						<li {!! classActivePath('field_of_prog') !!}><a href="{{ url('field_of_prog') }}">View Field Officers</a></li>
@@ -119,14 +128,14 @@ $home = '#'; ?>
 				<li {!! classActiveSegment(1, 'beneficiary') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-worker"></i><span>Beneficiaries</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-					@if (session('theuser')=='admin')
+					@if (session('theuser')=='admin' || session('theuser')=='team')
 						<li {!! classActivePath('beneficiarylist') !!}><a href="{{ url('beneficiarylist') }}">View Beneficiaries</a></li>
 					@elseif(session('theuser')=='client')
 						<li {!! classActivePath('beneficiary_of_org') !!}><a href="{{ url('beneficiary_of_org') }}">View Beneficiaries</a></li>
 					@elseif (session('theuser')=='program')
 						<li {!! classActivePath('beneficiary_of_prog') !!}><a href="{{ url('beneficiary_of_prog') }}">View Beneficiaries</a></li>
 					@elseif (session('theuser')=='field')
-						<li><a href="#">View Beneficiaries</a></li>
+						<li {!! classActivePath('beneficiary_of_prog') !!}><a href="{{ url('beneficiary_of_prog') }}">View Beneficiaries</a></li>
 					@endif						
 					</ul>
 					<!-- /.sub-menu js__content -->
@@ -135,14 +144,14 @@ $home = '#'; ?>
 				<li {!! classActiveSegment(1, 'dealer') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-location"></i><span>Agro Dealers</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-					@if (session('theuser')=='admin')
+					@if (session('theuser')=='admin' || session('theuser')=='team')
 						<li {!! classActivePath('dealerlist') !!}><a href="{{ url('dealerlist') }}">View Dealers</a></li>
 					@elseif (session('theuser')=='client')
 						<li {!! classActivePath('dealer_of_org') !!}><a href="{{ url('dealer_of_org') }}">View Dealers</a></li>
 					@elseif(session('theuser')=='program')
 						<li {!! classActivePath('dealer_of_prog') !!}><a href="{{ url('dealer_of_prog') }}">View Dealers</a></li>
 					@elseif (session('theuser')=='field')
-						<li><a href="#">View Agro Dealers</a></li>
+						<li {!! classActivePath('dealer_of_prog') !!}><a href="{{ url('dealer_of_prog') }}">View Dealers</a></li>
 					@endif
 					</ul>
 					<!-- /.sub-menu js__content -->
@@ -151,14 +160,14 @@ $home = '#'; ?>
 				<li {!! classActiveSegment(1, 'agent') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-switch"></i><span>Agents</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-					@if (session('theuser')=='admin')
+					@if (session('theuser')=='admin' || session('theuser')=='team')
 						<li {!! classActivePath('agentlist') !!}><a href="{{ url('agentlist') }}">View Agents</a></li>
 					@elseif (session('theuser')=='client')
 						<li {!! classActivePath('agent_of_org') !!}><a href="{{ url('agent_of_org') }}">View Agents</a></li>
 					@elseif(session('theuser')=='program')
 						<li {!! classActivePath('agent_of_prog') !!}><a href="{{ url('agent_of_prog') }}">View Agents</a></li>
 					@elseif (session('theuser')=='field')
-						<li><a href="#">View Agents</a></li>
+						<li {!! classActivePath('agent_of_prog') !!}><a href="{{ url('agent_of_prog') }}">View Agents</a></li>
 					@endif
 					</ul>
 					<!-- /.sub-menu js__content -->
@@ -170,16 +179,18 @@ $home = '#'; ?>
 					<li {!! classActiveSegment(1, 'voucher') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-barcode"></i><span>Vouchers</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-					@if (session('theuser')=='admin')
-						<li><a href="{{ url('voucher_types') }}">View types</a></li>
-						<li><a href="{{ url('voucher_batches') }}">View generated</a></li>
-						<li><a href="{{ url('voucher_all_dups') }}">View Duplicates</a></li>
+					@if (session('theuser')=='admin' || session('theuser')=='team')
+						<li {!! classActivePath('voucher_types') !!}><a href="{{ url('voucher_types') }}">View types</a></li>					
+						<li {!! classActivePath('voucher_choices_all') !!}><a href="{{ url('voucher_choices_all') }}">View Programme types</a></li>	
+						<li {!! classActivePath('voucher_batches') !!}><a href="{{ url('voucher_batches') }}">View generated batches</a></li>
+						<li {!! classActivePath('voucher_all_dups') !!}><a href="{{ url('voucher_all_dups') }}">View Duplicates</a></li>
 					@elseif (session('theuser')=='client')
-						<li><a href="{{ url('voucher_types_of_org') }}">View types</a></li>						
-						<li><a href="{{ url('voucher_org_batches') }}">View generated</a></li>
+						<li {!! classActivePath('voucher_types_of_org') !!}><a href="{{ url('voucher_types_of_org') }}">View types</a></li>					
+						<li {!! classActivePath('voucher_choices') !!}><a href="{{ url('voucher_choices') }}">View Programme types</a></li>					
+						<li {!! classActivePath('voucher_org_batches') !!}><a href="{{ url('voucher_org_batches') }}">View generated batches</a></li>
 					@elseif(session('theuser')=='program')
-						<li><a href="{{ url('voucher_types_of_prog') }}">view implemented</a></li>
-						<li><a href="{{ url('voucher_prog_batches') }}">View generated</a></li>
+						<li {!! classActivePath('voucher_types_of_prog') !!}><a href="{{ url('voucher_types_of_prog') }}">view selected types</a></li>
+						<li {!! classActivePath('voucher_prog_batches') !!}><a href="{{ url('voucher_prog_batches') }}">View generated batches</a></li>
 					@endif
 
 
@@ -188,11 +199,11 @@ $home = '#'; ?>
 				</li>
 				
 
-				@if (session('theuser')=='admin')
+				@if (session('theuser')=='admin' || session('theuser')=='team')
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-envira"></i><span>Products</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="#">View Products</a></li>
+						<li {!! classActivePath('productlist') !!}><a href="{{ url('productlist') }}">View Products</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
@@ -204,6 +215,8 @@ $home = '#'; ?>
 					@if(session('theuser')=='client')
 						<li><a href="#">View Logs</a></li>
 					@elseif(session('theuser')=='program')
+						<li><a href="#">View Logs</a></li>
+					@elseif(session('theuser')=='admin' || session('theuser')=='team')
 						<li><a href="#">View Logs</a></li>
 					@endif
 					</ul>
@@ -228,8 +241,8 @@ $home = '#'; ?>
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chart-areaspline"></i><span>Reports</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="#">sub menu 1</a></li>
-						<li><a href="#">Sub menu 2</a></li>
+						{{-- <li><a href="#">sub menu 1</a></li>
+						<li><a href="#">Sub menu 2</a></li> --}}
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
@@ -237,7 +250,7 @@ $home = '#'; ?>
 					
 @endif {{-- if field officers end --}}
 
-				@if (session('theuser')=='admin')
+				@if (session('theuser')=='admin' || session('theuser')=='team')
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-headset"></i><span>Call Center</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
@@ -249,12 +262,12 @@ $home = '#'; ?>
 
 
 
-				<li>
+				<li {!! classActiveSegment(1, 'profile') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-user"></i><span>Profile</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="{{ url('my_profile') }}">View Info</a></li>
+						<li {!! classActivePath('profile_my_profile') !!}><a href="{{ url('profile_my_profile') }}">View Info</a></li>
 						<li><a href="#">Edit Info</a></li>
-						<li><a href="{{ url('change_pass') }}">Change Password</a></li>
+						<li {!! classActivePath('profile_change_pass') !!}><a href="{{ url('profile_change_pass') }}">Change Password</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
@@ -263,7 +276,7 @@ $home = '#'; ?>
 				<li {!! classActiveSegment(1, 'configuration') !!}>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon fa fa-gear"></i><span>Configuration</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
-						<li><a href="#">Serial Numbers</a></li>
+						<li><a href="#">System</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
@@ -275,7 +288,7 @@ $home = '#'; ?>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-account-settings-variant"></i><span>User Management</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 						<li {!! classActivePath('user') !!}><a href="{{ url('user') }}">List Users</a></li>
-						<li {!! classActivePath('usertrail') !!}><a href="{{ url('usertrail') }}">Log Trail</a></li>
+						<li {!! classActivePath('usertrail') !!}><a href="{{ url('usertrail') }}">Login Trail</a></li>
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
@@ -363,11 +376,11 @@ $home = '#'; ?>
 	{!! HTML::script('assets/plugin/waves/waves.min.js') !!}
 
 	  <script type="text/javascript">
-      $(".alert-success").fadeTo(14400, 500).slideUp(500, function(){
+      $(".alert-success").fadeTo(20000, 500).slideUp(500, function(){
     $(".alert-success").slideUp(500);
 });
 
-         $(".alert-warning").fadeTo(14400, 500).slideUp(500, function(){
+         $(".alert-warning").fadeTo(20000, 500).slideUp(500, function(){
     $(".alert-success").slideUp(500);
 });
     </script>

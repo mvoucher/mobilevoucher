@@ -9,20 +9,21 @@
 @section('main')
 <?php $page_name = 'List of Organisations' ?>
 
+@if (session('theuser')=='admin')
+	<div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('organisation.create') }}"><button class="btn btn-xs btn-primary">Invite New Organisation</button></a>
+		<a href="{{ url('organisation_invites') }}"><button class="btn btn-xs btn-primary">View Invited Organisations </button></a>
+</div>
+</div>
+</div>
+@endif
+
 <div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('organisation.create') }}">Invite Organisation</a></li>
-							<li><a href="{{ url('organisation_invites') }}">List Invites</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+					
 					<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
@@ -32,8 +33,10 @@
 								<th>Telephone</th>
 								<th>Email</th>
 								<th>Date added</th>
+								@if (session('theuser')=='admin')									
 								<th>View : Edit</th>
 								<th>Delete</th>
+								@endif
 							</tr>
 						</thead>
 						<tbody>
@@ -45,7 +48,8 @@
 								<td>{{ $org->telephone }}</td>
 								<td>{{ $org->email }}</td>
 								<td>{{ date("d-m-Y", strtotime($org->created_at)) }}</td>
-								<td>   
+								@if (session('theuser')=='admin')
+									<td>   
 								<div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>
 						<a class="btn btn-warning btn-xs" href="#"><i class="fa fa-edit" title="Edit"></i></a>
@@ -55,6 +59,7 @@
         {!! Form::destroy('Delete', 'Are you sure you want to delete this client') !!}
         {!! Form::close() !!}
 								</td>
+								@endif
 							</tr>
 							{{-- expr --}}
 						@endforeach

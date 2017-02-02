@@ -22,6 +22,8 @@ class DealerController extends Controller
    }
 
    public function getProgDealers(){
+
+      //fetch by program id
       return view('dealers.of_program');
    }
 
@@ -31,5 +33,9 @@ class DealerController extends Controller
 
    public function getProgDealerImport(){
          return view('dealers.import');      
+   }
+
+   public function destroy(){
+      return redirect()->back()->with('ok','Agro Dealer successfully deleted');
    }
 }

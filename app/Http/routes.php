@@ -41,7 +41,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('invite_organ', 'ClientController@postInvite');	  //by admin
 	Route::get('organisation_invites', 'ClientController@getOrgInvites'); //by admin
 	Route::resource('organisation', 'ClientController'); //by admin
-	Route::get('organisationlist', ['uses'=>'ClientController@getClients','middleware' => 'admin']); //by admin
+	Route::get('organisationlist', ['uses'=>'ClientController@getClients','as' => 'organisationlist']); //by admin
 
 			// Program
 	Route::get('program', ['uses' => 'ProgrammeController@index','as' => 'program']);//program dashboard
@@ -52,7 +52,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('invite_program', 'ProgrammeController@postInvite');	  //by client
 
 				// Data Manager
-	Route::get('field', ['uses' => 'FieldController@index','as' => 'field']);//program dashboard
+	Route::get('field', ['uses' => 'FieldController@index','as' => 'field']);//field dashboard
 	Route::get('fieldlist', 'FieldController@getFieldms'); //by admin
 	Route::resource('fieldmngr', 'FieldController');//by program
 	Route::get('field_of_prog', 'FieldController@getProgramsField'); //by prog
@@ -66,6 +66,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('beneficiary_of_prog', 'BeneficiaryController@getProgBeneficiaries'); //by program
 	Route::get('beneficiary_import', 'BeneficiaryController@getProgBenefImport');//by program
 	Route::post('importBeneficiaryExcel', 'BeneficiaryController@importExcel'); //importing
+	Route::post('register_benef', 'BeneficiaryController@postBenef'); //posting form
+	
 
 /*	Route::get('downloadExcel/{type}', 'BeneficiaryController@downloadExcel'); //exporting csv and xcl
 	Route::get('exportPDF', 'BeneficiaryController@exportPDF'); //exportg pdf */
@@ -102,17 +104,21 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('voucher_batch_detail/{id}', 'VoucherController@getBatchDetails'); //by program
 	Route::resource('voucher_prog_destroy', 'VoucherController@postDeleteProgVoucher'); //by program
 	Route::get('voucher_overall_batch_detail/{id}', 'VoucherController@getOverallBatchDetails'); //by admin
-	Route::get('voucher_all_dups', 'VoucherController@getOverallGeneratedDups'); //by admin
-
-
+	Route::get('voucher_all_dups', 'VoucherController@getOverallGeneratedDups'); //by admin 
+	Route::get('voucher_choices', 'VoucherController@selectedOrgTypes');	  //by client 
+	Route::get('voucher_choices_all', 'VoucherController@allSelectedOrgTypes');	  //by admin 
 
 	//profile
-	Route::get('my_profile', 'UserController@getProfile');
-	Route::get('change_pass', ['uses' => 'AdminController@edit','as' => 'change_pass']);
+	Route::get('profile_my_profile', 'UserController@getProfile');
+	Route::get('profile_change_pass', ['uses' => 'AdminController@edit','as' => 'profile_change_pass']);
 	Route::post('new_password', 'UserController@changePassword');
 
-	//configurtions
-
+				// Team member
+	Route::get('team', ['uses' => 'TeamController@index','as' => 'team']);//field dashboard
+	
+	//products 
+	Route::resource('productlist', 'ProductController');
+	Route::get('productlist', 'ProductController@allProducts');	
 
 
 

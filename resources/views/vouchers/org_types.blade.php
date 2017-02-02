@@ -10,18 +10,18 @@
 <?php $page_name = 'Voucher Types' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('voucher.create') }}"><button class="btn btn-xs btn-primary">Create New Voucher Type </button></a>
+		{{-- <a href=""><button class="btn btn-xs btn-primary"> </button></a> --}}
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('voucher.create') }}">Create New Type</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+				
 
 					 @if(session()->has('ok'))
     @include('partials/error', ['type' => 'success', 'message' => session('ok')])
@@ -50,7 +50,7 @@
 						<a class="btn btn-warning btn-xs" href="{{ route('voucher.edit',$voucher_type->id) }}"><i class="fa fa-edit" title="Edit"></i></a>
 								</div></td>
 								<td>
-		{!! Form::open(['method' => 'DELETE', 'route' => ['user.destroy', $voucher_type->id]]) !!}
+		{!! Form::open(['method' => 'DELETE', 'route' => ['voucher.destroy', $voucher_type->id]]) !!}
         {!! Form::destroy('Delete', 'Are you sure you want to delete this voucher type') !!}
         {!! Form::close() !!}
 								</td>

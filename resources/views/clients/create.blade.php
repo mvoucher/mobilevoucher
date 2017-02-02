@@ -8,19 +8,25 @@
 <?php $page_name = 'Invite Organisation' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ url('organisationlist') }}"><button class="btn btn-xs btn-primary">View Registered Organisations </button></a>
+		<a href="{{ url('organisation_invites') }}"><button class="btn btn-xs btn-primary">View Invited Organisations </button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ url('organisationlist') }}">List Organisations</a></li>
-							<li><a href="{{ url('organisation_invites') }}">List Invites</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
+				
+					<div class="alert alert-warning alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert">
+		<span aria-hidden="true">&times;</span>
+		<span class="sr-only">Close</span>
+	</button>
+	Warning: Ensure that the recipient's <strong>email</strong> is correct and functional as it will receive the invitation link to register.  
+</div>	
 					
 					<!--form goes here -->
 

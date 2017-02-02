@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateActivityLogTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateProductsTable extends Migration
      */
     public function up()
    {
-        Schema::create('products', function(Blueprint $table)
+        Schema::create('activity_logs', function(Blueprint $table)
         {  
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->unique();            
-            $table->string('slug');            
-            $table->string('category');
+            $table->string('activity_name');            
+            $table->string('description');            
+            $table->integer('user_id');
             $table->timestamps();           
         });
     }
@@ -29,6 +29,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-          Schema::drop('products');
+          Schema::drop('activity_logs');
     }
 }

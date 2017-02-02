@@ -115,7 +115,7 @@ public function getTrail(){
             $user = auth()->user();
             $user->password = bcrypt($credentials['password']);
             $user->save();
-            return redirect('my_profile')->with('ok','Password successfully changed');
+            return redirect('profile_my_profile')->with('ok','Password successfully changed');
     }
 
     public function myProfile(){
