@@ -79,7 +79,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('dealer_of_org', 'DealerController@getOrgDealers');
 	Route::get('dealer_of_prog', 'DealerController@getProgDealers');
 	Route::get('dealer_import', 'DealerController@getProgDealerImport');//by program 
-	Route::post('register_dealer', 'BeneficiaryController@postDealer'); //posting form
+	Route::post('register_dealer', 'DealerController@postDealer'); //posting form
 
 						// Agents
 	Route::resource('agent', 'AgentController');
