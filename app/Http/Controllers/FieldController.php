@@ -55,7 +55,7 @@ class FieldController extends Controller
       $field_of_programs = new User;
 
       $prog_id = auth()->user()->id;
-      $program_field = $field_of_programs->where('prog_id','=',$prog_id)->get();
+      $program_field = $field_of_programs->where('prog_id','=',$prog_id)->where('role_id','=',5)->get();
    		return view('field.of_programme',compact('program_field'));
    }
 

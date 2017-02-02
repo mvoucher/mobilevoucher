@@ -37,7 +37,7 @@ class UserRepository extends BaseRepository
 			$user->photo = $imageName;
 			$user->name = $inputs['name'];
 			$user->telephone = $inputs['telephone'];
-			$user->country = $inputs['country'];
+			$user->district = $inputs['district'];
 			$user->role_id = $inputs['usertype'];
 			$user->username = $inputs['username'];
 			$user->email = $inputs['email'];

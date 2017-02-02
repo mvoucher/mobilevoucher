@@ -20,7 +20,7 @@
 							<tr>
 								<th>Name</th>
 								<th>Organisation</th>
-								<th>Country</th>
+								<th>District</th>
 								<th>Date added</th>
 								<th>View</th>
 							</tr>
@@ -30,7 +30,7 @@
 							<tr>
 								<td>{{ $program->name }}</td>
 								<td>{{ $program_methods->getProgOrganisation($program->org_id)  }}</td>
-								<td>{{ $program->country }}</td>
+								<td>{{ $program->district }}</td>
 								<td>{{ date("d-m-Y", strtotime($program->created_at)) }}</td>
 								<td><div class="btn-group">
 						 <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-eye" title="View more"></i></a>

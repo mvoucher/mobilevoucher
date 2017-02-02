@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder {
 		User::create([
 			'name'=>'Najja Najibula',
 			'telephone'=>'0702794162',
-			'country'=>'Uganda',
+			'district'=>'Kampala',
 			'role_id' => 1,
 			'photo'=>'default.png',
 			'username' => '',
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder {
 				User::create([
 			'name'=>'Mary Musimire',
 			'telephone'=>'0750132311',
-			'country'=>'Uganda',
+			'district'=>'Kampala',
 			'role_id' => 1,
 			'photo'=>'default.png',
 			'username' => 'mmusimire',
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder {
 		User::create([
 			'name'=>'Evelyn Namara',
 			'telephone'=>'0771366479',
-			'country'=>'Uganda',
+			'district'=>'Kampala',
 			'role_id' => 6,
 			'photo'=>'default.png',
 			'username' => 'evelyn',
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder {
 				User::create([
 			'name'=>'Opio David',
 			'telephone'=>'0783689831',
-			'country'=>'Uganda',
+			'district'=>'Kampala',
 			'role_id' => 6,
 			'photo'=>'default.png',
 			'username' => 'Obwangamoi',
@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder {
 		User::create([
 			'name'=>'Test Organisation',
 			'telephone'=>'1234567890',
-			'country'=>'Uganda',
+			'district'=>'Kampala',
 			'role_id' => 2,
 			'photo'=>'default.png',
 			'username' => 'testorg',
@@ -100,9 +100,9 @@ class DatabaseSeeder extends Seeder {
 		User::create([
 			'name'=>'Test Programme',
 			'telephone'=>'0987654321',
-			'country'=>'Uganda',
+			'district'=>'Kampala',
 			'role_id' => 3,
-			'org_id' => 2,
+			'org_id' => 5,
 			'photo'=>'default.png',
 			'username' => 'testprog',
 			'email' => 'email@program.com',
@@ -114,9 +114,9 @@ class DatabaseSeeder extends Seeder {
 				User::create([
 			'name'=>'Test Field',
 			'telephone'=>'5432167890',
-			'country'=>'Uganda',
-			'role_id' => 3,
-			'prog_id' => 2,
+			'district'=>'Kampala',
+			'role_id' => 5,
+			'prog_id' => 6,
 			'photo'=>'default.png',
 			'username' => 'testfield',
 			'email' => 'email@field.com',

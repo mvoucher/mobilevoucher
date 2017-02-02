@@ -10,19 +10,18 @@
 <?php $page_name = 'Invited Programmes' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('programme.create') }}"><button class="btn btn-xs btn-primary">Invite New Programme</button></a>
+		<a href="{{ url('programme_of_org') }}"><button class="btn btn-xs btn-primary">View Registered Programmes</button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('programme.create') }}">Invite Programme</a></li>
-							<li><a href="{{ url('programmelist') }}">List Programmes</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-
+					
  @if(session()->has('ok'))
     @include('partials/error', ['type' => 'success', 'message' => session('ok')])
   @endif

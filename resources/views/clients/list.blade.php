@@ -28,7 +28,7 @@
 							<tr>
 								<th>Name</th>
 								<th>Username</th>
-								<th>Country</th>
+								<th>District</th>
 								<th>Telephone</th>
 								<th>Email</th>
 								<th>Date added</th>
@@ -41,7 +41,7 @@
 							<tr>
 								<td>{{ $org->name }}</td>
 								<td>{{ $org->username }}</td>
-								<td>{{ $org->country }}</td>
+								<td>{{ $org->district }}</td>
 								<td>{{ $org->telephone }}</td>
 								<td>{{ $org->email }}</td>
 								<td>{{ date("d-m-Y", strtotime($org->created_at)) }}</td>

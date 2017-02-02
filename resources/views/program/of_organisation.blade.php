@@ -10,24 +10,22 @@
 <?php $page_name = 'List of Programmes' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ route('programme.create') }}"><button class="btn btn-xs btn-primary">Invite New Programme</button></a>
+		<a href="{{ url('program_invites') }}"><button class="btn btn-xs btn-primary">View Invited programmes</button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content table-responsive">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ route('programme.create') }}">Invite Programme</a></li>
-							<li><a href="{{ url('program_invites') }}">List Invites</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
-					<table id="example" class="table table-striped table-bordered display" style="width:100%">
+				<table id="example" class="table table-striped table-bordered display" style="width:100%">
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Country</th>
+								<th>District</th>
 								<th>Telephone</th>
 								<th>Email</th>
 								<th>Delete</th>
@@ -37,7 +35,7 @@
 						@foreach ($program as $prog)
 						<tr>
 								<td>{{ $prog->name }}</td>
-								<td>{{ $prog->country }}</td>
+								<td>{{ $prog->district }}</td>
 								<td>{{ $prog->telephone }}</td>
 								<td>{{ $prog->email }}</td>
 								

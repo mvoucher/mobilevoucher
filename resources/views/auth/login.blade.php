@@ -50,7 +50,7 @@
 
          <div class="row small-spacing">
         <!-- /.col-sm-12 -->
-        <div class="col-sm-12"><button type="submit" class="btn btn-sm btn-icon btn-icon-left btn-social-with-text btn-facebook text-white waves-effect waves-light"><i class="ico fa fa-arrow-circle-right"></i><span>Login me in</span></button></div>
+        <div class="col-sm-12"><button type="submit" class="btn btn-sm btn-icon btn-icon-left btn-social-with-text btn-facebook text-white waves-effect waves-light"><i class="ico fa fa-arrow-circle-right"></i><span>Login</span></button></div>
         <!-- /.col-sm-6 -->
       </div>
 

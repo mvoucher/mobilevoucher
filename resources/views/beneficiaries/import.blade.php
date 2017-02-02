@@ -9,19 +9,18 @@
 <?php $page_name = 'Import Beneficiaries file' ?>
 
 <div class="row small-spacing">
+<div class="col-xs-12">
+<div class="top-content">
+		<a href="{{ url('beneficiary_of_prog') }}"><button class="btn btn-xs btn-primary">View Beneficiaries </button></a>
+		<a href=""><button class="btn btn-xs btn-primary">Download Excel Template</button></a>
+</div>
+</div>
+</div>
+
+<div class="row small-spacing">
 		<div class="col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">{{-- ..... --}}</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon mdi mdi-menu mdi-24px js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="{{ url('beneficiary_of_prog') }}">View Beneficiaries</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<!-- /.dropdown js__dropdown -->
-
+					
 <div class="alert alert-warning alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert">
 		<span aria-hidden="true">&times;</span>

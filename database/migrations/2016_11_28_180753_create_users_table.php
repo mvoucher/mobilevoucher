@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
             $table->increments('id');
             $table->string('name', 30);
             $table->string('telephone')->unique();
-            $table->string('country');
+            $table->string('district');
             $table->integer('role_id')->unsigned();
             $table->integer('org_id')->default(0);
             $table->integer('prog_id')->default(0);

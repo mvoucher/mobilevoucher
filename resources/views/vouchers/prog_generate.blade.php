@@ -25,7 +25,7 @@
 					<!--form goes here -->
 						{!! Form::open(['url' => 'voucher_generating', 'method' => 'post', 'class' => 'form-horizontal','onsubmit'=>'return checkForm(this);']) !!}	
 
-						<div class="alert alert-warning alert-dismissible" role="alert">
+<div class="alert alert-warning alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert">
 		<span aria-hidden="true">&times;</span>
 		<span class="sr-only">Close</span>

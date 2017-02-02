@@ -55,7 +55,7 @@ class ProgrammeController extends Controller
       $programs_of_org = new User;
 
       $org_id = auth()->user()->id;
-      $program = $programs_of_org->where('org_id','=',$org_id)->get();
+      $program = $programs_of_org->where('org_id','=',$org_id)->where('role_id','=',3)->get();
    		return view('program.of_organisation',compact('program'));
    }
 

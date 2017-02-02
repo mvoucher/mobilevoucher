@@ -103,7 +103,7 @@ $home = '#'; ?>
 
 					@if (session('theuser')=='admin' || session('theuser')=='program')
 					<li {!! classActiveSegment(1, 'field') !!}>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chemical-weapon"></i><span>Field Officer</span><span class="menu-arrow fa fa-angle-down"></span></a>
+					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-chemical-weapon"></i><span>Field Officers</span><span class="menu-arrow fa fa-angle-down"></span></a>
 					<ul class="sub-menu js__content">
 					@if (session('theuser')=='admin')
 						<li {!! classActivePath('fieldlist') !!}><a href="{{ url('fieldlist') }}">View Field Officers</a></li>

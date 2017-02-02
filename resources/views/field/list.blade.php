@@ -20,7 +20,7 @@
 							<tr>
 								<th>Name</th>
 								<th>Programme</th>
-								<th>Country</th>
+								<th>District</th>
 								<th>Date added</th>
 							</tr>
 						</thead>
@@ -29,7 +29,7 @@
 							<tr>
 								<td>{{ $program->name }}</td>
 								<td>{{ $field_methods->getFieldProg($program->prog_id)  }}</td>
-								<td>{{ $program->country }}</td>
+								<td>{{ $program->district }}</td>
 								<td>{{ date("d-m-Y", strtotime($program->created_at)) }}</td>
 							</tr>						@endforeach
 							

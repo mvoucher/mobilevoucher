@@ -18,7 +18,7 @@ class RegisterRequest extends Request {
 			'password' => 'required|min:8|confirmed',
 			'telephone' => 'required|min:10|unique:users',
 			'usertype'=> 'required',
-			'country'=>'required',
+			'district'=>'required',
 			'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 		];
 	}

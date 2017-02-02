@@ -22,7 +22,7 @@
 					
 					<p><strong>Company name</strong> : </p>
 					<p><strong>Telephone</strong> : </p>
-					<p><strong>Country</strong> : </p>
+					<p><strong>District</strong> : </p>
 					<p><strong>Role</strong> : </p>
 				</div>
 				<!-- /.box-content -->

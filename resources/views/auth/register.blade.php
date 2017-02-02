@@ -51,9 +51,9 @@
       <!-- /.frm-input -->
 
         <!-- /.frm-title -->
-        <span class="text-danger">{{ $errors->first('country', ':message') }}</span>
+        <span class="text-danger">{{ $errors->first('district', ':message') }}</span>
       <div class="frm-input">
-        {{ Form::text('country', null, ['class' => 'frm-inp','placeholder'=>'country']) }}
+        {{ Form::text('district', null, ['class' => 'frm-inp','placeholder'=>'e.g. Kampala']) }}
         <i class="fa fa-globe frm-ico"></i>
         </div>
       <!-- /.frm-input -->
