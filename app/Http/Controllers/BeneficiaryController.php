@@ -49,7 +49,7 @@ class BeneficiaryController extends Controller
          $user_id = auth()->user()->id;         
       }
 
-      $benefic = new Beneficiary;
+      $beneficiary = new Beneficiary;
       $beneficiary->firstname = $request->firstname;
       $beneficiary->lastname = $request->lastname;
       $beneficiary->gender = $request->gender;

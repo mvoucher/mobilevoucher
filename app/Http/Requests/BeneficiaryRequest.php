@@ -10,7 +10,7 @@ class BeneficiaryRequest extends Request {
 	public function rules()
 	{
 		return [
-			/*'fistname' => 'required|min:3',
+			'fistname' => 'required|min:3',
 			'lastname' => 'required|min:3',
 			'gender' => 'required',
 			'age' => 'required|numeric',
@@ -18,7 +18,7 @@ class BeneficiaryRequest extends Request {
 			'sub_county' => 'required',
 			'village' => 'required',
 			'no_in_household' => 'required|numeric',
-			'voucher_serial_no' => 'required',*/
+			'voucher_serial_no' => 'required',
 		];
 	}
 
